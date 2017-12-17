@@ -1,4 +1,31 @@
-#mapid {
+h1 {
+    color: #333333;
+    font-family: 'Bitter', serif;
+    font-size: 50px;
+    font-weight: normal;
+    line-height: 54px;
+    margin: 2% 0 1% 10%;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+.container {
+    width: 80%;
+    height: 200px;
+    margin: auto;
+    padding: 10px;
+}
+
+#mapId {
+    width: 50%;
     height: 600px;
-    width: 800px;
+    float: left;
+    margin-right: 10px;
+}
+
+#compareMapId {
+    margin-left: 15%;
+    height: 600px;
 }
