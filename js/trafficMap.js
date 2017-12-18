@@ -1,5 +1,5 @@
 //Initialisieren Map, setView auf Bonn, Angabe Zoom
-var mapBonn = L.map('map_id1').setView([50.735, 7.10], 13);
+var mapBonn = L.map('map_traffic_id').setView([50.735, 7.10], 13);
 
 //Credits zu Karte
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -11,7 +11,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 }).addTo(mapBonn);
 
 //***Map for comparison***
-var compareMapBonn = L.map('compareMapId').setView([50.735, 7.10], 13);
+var compareMapBonn = L.map('map_compare_id').setView([50.735, 7.10], 13);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     maxZoom: 18,
@@ -27,4 +27,4 @@ function onEachFeature(feature) {
     marker.bindPopup("<b> Verkehrsstatus: <b/>" + feature.properties.verkehrsstatus);
 }
 
-L.geoJSON(VerkehrslageTest, {onEachFeature: onEachFeature}).addTo(map);
+L.geoJSON(VerkehrslageTest, {onEachFeature: onEachFeature}).addTo(mapBonn);

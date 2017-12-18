@@ -1,5 +1,5 @@
 //Initialisieren Map, setView auf Bonn, Angabe Zoom
-var mapBonn = L.map('map_id2').setView([50.710, 7.10], 12);
+var mapBonn = L.map('map_poi_id').setView([50.710, 7.10], 12);
 
 //Credits zu Karte
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -13,8 +13,8 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 
 
 //*** CUSTOM ICONS ***
-//Elektrotankstellen
-var icon_ETS = L.icon({
+//Elektrotankstellen (Electric car charging point)
+var icon_CCP = L.icon({
     iconUrl: '../img/Stromtankstelle.jpg',
     iconSize:[20, 20],
     iconAnchor:[10, 10],
@@ -34,18 +34,18 @@ var icon_PAR = L.icon({
 
 
 
-//*** ELEKTROTANKSTELLEN (ETS)***
-function onEachETSFeature(feature) {
+//*** ELEKTROTANKSTELLEN (CCP)***
+function onEachCCPFeature(feature) {
     //fügt Marker zu Karte hinzu
-    var markerETS = L.marker(feature.geometry.coordinates, {icon:icon_ETS}).addTo(mapBonn);
+    var markerCCP = L.marker(feature.geometry.coordinates, {icon:icon_CCP}).addTo(mapBonn);
     //Pop-Up zu Marker
-    markerETS.bindPopup("<b>" + feature.properties.Einrichtung
+    markerCCP.bindPopup("<b>" + feature.properties.Einrichtung
         + "</b> <br> <b>Adresse: </b>" + feature.properties.Strasse
         + "</b> <br> <b>Leistung: </b> max. " + feature.properties.Leistung + "kW"
         + "<br> <b>Anmerkungen: </b>" + feature.properties.Anmerkungen);
 }
 L.geoJSON(ElektrotankstellenStandorte, {
-    onEachFeature: onEachETSFeature
+    onEachFeature: onEachCCPFeature
 }).addTo(mapBonn);
 
 

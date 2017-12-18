@@ -18,29 +18,29 @@
 <body>
 
 <div class="navigation" id="navigation">
-    <a href="#map_id1" class="active">VERKEHRSLAGE</a>
-    <a href="#map_id2">ANSÄTZE</a>
+    <a href="#map_traffic_id" class="active">VERKEHRSLAGE</a>
+    <a href="#map_poi_id">ANSÄTZE</a>
 </div>
 
 
 <section class="container">
-    <p class="karte_headline"> Verkehrslage </p>
-    <div id="map_id1"></div>
-    <div id="compareMapId"></div>
+    <p class="map_headline"> Verkehrslage </p>
+    <div id="map_traffic_id"></div>
+    <div id="map_compare_id"></div>
 
     <script type="text/javascript" src="../js/Verkehrslage.js"></script>
-    <script type="text/javascript" src="../js/karte1.js"></script>
+    <script type="text/javascript" src="../js/trafficMap.js"></script>
 </section>
 
-<section class="container_two">
-    <p class="karte_headline">Ansätze: Elektrotankstellen, Park&Ride, Carsharing</p>
-    <div id="map_id2"></div>
+<section class="containerTwo">
+    <p class="map_headline">Ansätze: Elektrotankstellen, Park&Ride, Carsharing</p>
+    <div id="map_poi_id"></div>
 
     <!-- Einbinden GeoJSONs -->
     <script type="text/javascript" src="../js/Elektrotankstellen.js"></script>
     <script type="text/javascript" src="../js/Carsharing.js"></script>
     <script type="text/javascript" src="../js/ParkAndRide.js"></script>
-    <script type="text/javascript" src="../js/karte2.js"></script>
+    <script type="text/javascript" src="../js/poiMap.js"></script>
 </section>
 <br>
 <br>
@@ -48,7 +48,7 @@
 <br>
 
 <div id="footer">
-    <p id="footer_text">GDV WS2017/18 bei Prof. Dr. Till Nagel<br>
+    <p id="footerText">GDV WS2017/18 bei Prof. Dr. Till Nagel<br>
         Präsentiert von den Rittern der Lamarunde: Hanna, Regina, Luca, Stefanie</p>
 </div>
 
