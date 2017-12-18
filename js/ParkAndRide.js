@@ -10,8 +10,8 @@ var ParkAndRideStandorte = {
                     "properties":{
                         "name":"EPSG:25832"
                     }},
-                //"coordinates":[370085.6368,5616225.944]
-                "coordinates":[50.742, 7.12]
+                //"coordinates":[370085.6368,5616225.944] //EPSG:25832 Format
+                "coordinates":[50.6840675, 7.160606400000006] //WGS84 Format
             },
             "properties": {
                 "point_id":653265,
@@ -20,7 +20,7 @@ var ParkAndRideStandorte = {
                 "ort_bezeichnung": "Bonn",
                 "strasse":2432,
                 "strasse_bezeichnung":"Von-Groote-Platz",
-                "hausnr":null,
+                "hausnr": null,
                 "plz":null,
                 "telefon":null,
                 "fax":null,
@@ -50,7 +50,7 @@ var ParkAndRideStandorte = {
                         "name":"EPSG:25832"
                     }},
                 //"coordinates":[367891.4224,5622344.296]},
-                "coordinates":[50.742, 7.13]},
+                "coordinates":[50.7390953, 7.1266729999999825]},
             "properties":{
                 "point_id":653266,
                 "name":"Beuel Bf.",
@@ -87,7 +87,7 @@ var ParkAndRideStandorte = {
                         "name":"EPSG:25832"
                     }},
                 //"coordinates":[371494.5567,5614649.999]
-                "coordinates":[50.745, 7.14]
+                "coordinates":[50.668384, 7.181618]
             },
             "properties":{
                 "point_id":653267,
@@ -124,7 +124,7 @@ var ParkAndRideStandorte = {
                         "name":"EPSG:25832"
                     }},
                 //"coordinates":[369799.3137,5620514.916]
-                "coordinates":[50.735, 7.09]
+                "coordinates":[50.722037, 7.156601]
             },
             "properties":{
                 "point_id":653268,
@@ -163,7 +163,7 @@ var ParkAndRideStandorte = {
                                 "name":"EPSG:25832"
                             }},
                     //"coordinates":[369885.5411,5615826.731]
-                    "coordinates":[50.738, 7.11]
+                    "coordinates":[50.680077, 7.158136]
                 },
             "properties":{
                 "point_id":743449,
@@ -200,7 +200,7 @@ var ParkAndRideStandorte = {
                         "name":"EPSG:25832"
                     }},
                 //"coordinates":[361853.4092,5620119.163]
-                "coordinates":[50.737, 7.12]
+                "coordinates":[50.716093, 7.041708]
             },
             "properties":{
                 "point_id":743450,
@@ -237,7 +237,7 @@ var ParkAndRideStandorte = {
                         "name":"EPSG:25832"
                     }},
                 //"coordinates":[367987.2486,5623744.199]
-                "coordinates":[50.735, 7.10]
+                "coordinates":[50.750954, 7.129261]
             },
             "properties":{
                 "point_id":743451,
@@ -273,7 +273,7 @@ var ParkAndRideStandorte = {
                         "name":"EPSG:25832"
                     }},
                 //"coordinates":[362827.4206,5623057.868]
-                "coordinates":[50.739, 7.13]
+                "coordinates":[50.743340, 7.055575]
             },"properties":{
                 "point_id":743457,
                 "name":"Tannenbusch-Süd",
