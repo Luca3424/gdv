@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Die 3 Meta-Tags oben *müssen* zuerst im head stehen; jeglicher sonstiger head-Inhalt muss *nach* diesen Tags kommen -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Dashboard-Vorlage für Bootstrap</title>
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+          integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+          crossorigin=""/>
+
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+            integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+            crossorigin=""></script>
+
+    <!-- Bootstrap-CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Besondere Stile für diese Vorlage -->
+    <link href="../css/dashboard.css" rel="stylesheet">
+
+    <!-- Nur für Testzwecke. Kopiere diese Zeilen nicht in echte Projekte! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- Unterstützung für Media Queries und HTML5-Elemente in IE8 über HTML5 shim und Respond.js -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+            <span class="sr-only">Navigation ein-/ausblenden</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">TraVis Bonn</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Überblick <span class="sr-only">(aktuell)</span></a></li>
+            <li><a href="#verkehr">Verkehrslage</a></li>
+            <li><a href="#ansätze">Ansätze</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Dashboard</h1>
+
+
+          <div id="container">
+            <h1 id="verkehr"> Verkehrslage </h1>
+                <div id="map_traffic_id"></div>
+                <div id="map_compare_id"></div>
+              <script type="text/javascript" src="../js/trafficMap.js"></script>
+            </div>
+
+            <div id="containerTwo">
+              <h1 id="ansätze">Ansätze</h1>
+              <h2 id="elektro">Elektrotankstellen, Park&Ride, Carsharing</h2>
+              <div id="map_poi_id"></div>
+                <!-- Einbinden GeoJSONs -->
+                <script type="text/javascript" src="../js/Elektrotankstellen.js"></script>
+                <script type="text/javascript" src="../js/Carsharing.js"></script>
+                <script type="text/javascript" src="../js/ParkAndRide.js"></script>
+                <script type="text/javascript" src="../js/poiMap.js"></script>
+            </div>
+
+            <div id="footer">
+              <p id="footerText">GDV WS2017/18 bei Prof. Dr. Till Nagel<br>
+                Präsentiert von den <b>Rittern der Lamarunde</b> - Hanna, Regina, Luca, Stefanie</p>
+            </div>
+
+          <!-- <script type="text/javascript" src="../js/mainJS.js"></script> -->
+        </div>
+        </div>
+      </div>
+
+
+
+
+
+
+    <!-- Bootstrap-JavaScript
+    ================================================== -->
+    <!-- Am Ende des Dokuments platziert, damit Seiten schneller laden -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../../dist/css/bootstrap.min.js"></script>
+    <!-- Nur, um unsere Platzhalter-Bilder zum Laufen zu bringen. Die nächste Zeile nicht wirklich kopieren! -->
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <!-- IE10-Anzeigefenster-Hack für Fehler auf Surface und Desktop-Windows-8 -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+  </body>
+</html>
