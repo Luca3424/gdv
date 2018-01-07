@@ -11,7 +11,6 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 }).addTo(mapBonn);
 
 
-
 //*** CUSTOM ICONS ***
 //Elektrotankstellen
 var icon_ETS = L.icon({
@@ -75,3 +74,38 @@ function onEachPARFeature(feature) {
 L.geoJSON(ParkAndRideStandorte, {
     onEachFeature: onEachPARFeature
 }).addTo(mapBonn);
+
+/*d3.json("ParkAndRideStandorte.geojson", function(data){
+    onEachFeature: onEachPARFeature
+}).addTo(mapBonn);
+
+/*L.geoJSON(PAR_Points).addTo(mapBonn);
+onEachPARFeature(PAR_Points);
+
+/*d3.json("ParkAndRideStandorte.geojson", function(data){
+    onEachFeature: onEachPARFeature
+}).addTo(mapBonn);
+
+/*d3.json("../geojson/Donnerstag/verkehr-20171214000000.geojson", function(json) {
+    svg.selectAll("mapBonn")
+        .data(json.features)
+        .enter()
+        .append("mapBonn")
+        .attr("d", mapBonn);
+});*/
+
+/*var geojsonLayer = new L.GeoJSON.AJAX("../../geojson/ParkAndRideStandorte.geojson");
+mapBonn.addLayer(geojsonLayer);
+
+function handleGeoJSON(data) {
+    geojsonLayer.addGeoJSON(data)
+}*/
+
+/*var PAR_Points = $.ajax({
+    url:"../geojson/ParkAndRideStandorte.geojson",
+    dataType: "geojson",
+    success: console.log("Data successfully loaded."),
+    error: function (xhr) {
+        alert(xhr.statusText)
+    }
+});*/

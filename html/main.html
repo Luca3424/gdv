@@ -5,6 +5,8 @@
     <title>TraVis Bonn</title>
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
 
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
           integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
           crossorigin=""/>
@@ -12,6 +14,8 @@
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
             integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
             crossorigin=""></script>
+
+    <script type="text/javascript" src="../leaflet-ajax/dist/leaflet.ajax.js"></script>
 
     <link rel="stylesheet" type="text/css" href="../css/mainStyle.css">
 </head>
@@ -28,7 +32,7 @@
     <div id="map_id1"></div>
     <div id="compareMapId"></div>
 
-    <script type="text/javascript" src="../js/Verkehrslage.js"></script>
+    <script type="text/javascript" src="../js/VerkehrslageTest.js"></script>
     <script type="text/javascript" src="../js/karte1.js"></script>
 </section>
 
@@ -40,8 +44,22 @@
     <script type="text/javascript" src="../js/Elektrotankstellen.js"></script>
     <script type="text/javascript" src="../js/Carsharing.js"></script>
     <script type="text/javascript" src="../js/ParkAndRide.js"></script>
+    <script type="text/javascript" src="../geojson/ParkAndRideStandorte.geojson"></script>
     <script type="text/javascript" src="../js/karte2.js"></script>
 </section>
+
+<section class="container_three">
+    <p class="karte_headline">Durchschnittliche Geschwindigkeit</p>
+    <div id="graph"></div>
+    <script type="text/javascript" src="../js/speedGraph.js"></script>
+</section>
+
+<section class="container_four">
+    <p class="karte_headline">Tagesüberblick</p>
+    <div id="day"></div>
+    <script type="text/javascript" src="../js/dayOverview.js"></script>
+</section>
+
 <br>
 <br>
 <br>
