@@ -11,10 +11,10 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 }).addTo(trafficMapBonn);
 
 
-var farbe = "red";
+var farbe = "#FFFFFF";
 
 //Versuch, Strecken anders zu färben
-function traffic_color(feature) {
+/*function traffic_color(feature) {
     if(feature.properties.strecke_id=3){
         farbe = "green";
     }
@@ -22,11 +22,29 @@ function traffic_color(feature) {
         farbe = "blue";
     }
     return farbe;
-}
+}*/
 
 // adding dara to map, coloring
 L.geoJSON(traffic1, {
-    color: farbe,
+    style: function(feature){
+        var farbe = "#FFFF00";
+        if(feature.properties.verkehrsstatus="normales Verkehrsaufkommen"){
+            farbe = "#00FF00";
+        }
+        else if (feature.properties.verkehrsstatus="erhöhte Verkehrsbelastung") {
+            farbe = "#0000FF";
+        }
+        else if (feature.properties.verkehrsstatus="Staugefahr"){
+            farbe = "#000000";
+        }
+        else if (feature.properties.verkehrsstatus="Stau"){
+            farbe="#000000";
+        }
+        else if (feature.verkehrsstatus="aktuell nicht ermittelbar"){
+            farbe="#000000"
+        }
+        return {color: farbe};
+    }
 }).addTo(trafficMapBonn);
 
 //***Map for comparison***
