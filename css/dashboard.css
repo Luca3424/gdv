@@ -87,6 +87,7 @@ div#container {
   height: 600px;
   margin: auto;
   padding: 10px;
+  margin-bottom: 100px;
 }
 
 div#containerTwo {
@@ -107,6 +108,7 @@ div#map_traffic_id {
   height: 600px;
   width: 45%;
   float: left;
+  margin-right: 20px;
 }
 
 div#map_poi_id {
