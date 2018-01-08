@@ -10,16 +10,22 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Dashboard-Vorlage für Bootstrap</title>
+    <!-- D3 JS -->
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
 
+    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
           integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
           crossorigin=""/>
 
+    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
             integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
             crossorigin=""></script>
+
+    <!-- MainJS -->
+    <script type="text/javascript" src="data.geojson"></script>
+    <script type="text/javascript" src="mainJS.js"></script>
 
     <!-- Bootstrap-CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -38,7 +44,7 @@
     <![endif]-->
   </head>
 
-  <body>
+  <body onload="init()">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -98,8 +104,6 @@
               <p id="footerText">GDV WS2017/18 bei Prof. Dr. Till Nagel<br>
                 Präsentiert von den <b>Rittern der Lamarunde</b> - Hanna, Regina, Luca, Stefanie</p>
             </div>
-
-          <!-- <script type="text/javascript" src="../js/mainJS.js"></script> -->
         </div>
         </div>
       </div>

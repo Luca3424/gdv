@@ -11,18 +11,20 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 }).addTo(trafficMapBonn);
 
 
-var farbe = "red";
-
 //Versuch, Strecken anders zu färben
-function traffic_color(feature) {
-    if(feature.properties.strecke_id=3){
-        farbe = "green";
+function getColorByStatus(status) {
+    var color = "red";
+    if (status = "normales Verkehrsaufkommen") {
+        color = "green";
+    } else if (status = "erhöhte Verkehrsbelastung") {
+        color = "yellow";
+    } else if (status = "aktuell nicht ermittelbar") {
+        color = "grey";
     }
-    else {
-        farbe = "blue";
-    }
-    return farbe;
+    return color;
 }
+
+var farbe = "red";
 
 // adding dara to map, coloring
 L.geoJSON(traffic1, {
