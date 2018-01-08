@@ -11,7 +11,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 }).addTo(trafficMapBonn);
 
 
-var farbe = "#FFFFFF";
+//var farbe = "#FFFFFF";
 
 //Versuch, Strecken anders zu färben
 /*function traffic_color(feature) {
@@ -26,22 +26,25 @@ var farbe = "#FFFFFF";
 
 // adding dara to map, coloring
 L.geoJSON(traffic1, {
-    style: function(feature){
-        var farbe = "#FFFF00";
-        if(feature.properties.verkehrsstatus="normales Verkehrsaufkommen"){
-            farbe = "#00FF00";
-        }
-        else if (feature.properties.verkehrsstatus="erhöhte Verkehrsbelastung") {
-            farbe = "#0000FF";
-        }
-        else if (feature.properties.verkehrsstatus="Staugefahr"){
-            farbe = "#000000";
-        }
-        else if (feature.properties.verkehrsstatus="Stau"){
-            farbe="#000000";
-        }
-        else if (feature.verkehrsstatus="aktuell nicht ermittelbar"){
-            farbe="#000000"
+    style: function x(feature) {
+        switch (feature.properties.verkehrsstatus) {
+            case 'normales Verkehrsaufkommen':
+                farbe = '#00FF3C';
+                break;
+            case 'erhöhtes Verkehrsaufkommen':
+                    farbe = '#FFBF00'
+                break;
+            case 'Staugefahr':
+                    farbe='#FF4000'
+                break;
+            case 'Stau':
+                    farbe='#FF0000'
+                break;
+            case 'aktuell nicht ermittelbar':
+                farbe = '#81BEF7';
+                break;
+            default:
+                farbe='#000000'
         }
         return {color: farbe};
     }
@@ -60,4 +63,25 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 }).addTo(compareMapBonn);
 
 
-L.geoJSON(traffic2).addTo(compareMapBonn);
+L.geoJSON(traffic2, {style: function x(feature) {
+        switch (feature.properties.verkehrsstatus) {
+            case 'normales Verkehrsaufkommen':
+                farbe = '#00FF3C';
+                break;
+            case 'erhöhtes Verkehrsaufkommen':
+                farbe = '#FFBF00'
+                break;
+            case 'Staugefahr':
+                farbe='#FF4000'
+                break;
+            case 'Stau':
+                farbe='#FF0000'
+                break;
+            case 'aktuell nicht ermittelbar':
+                farbe = '#81BEF7';
+                break;
+            default:
+                farbe='#000000'
+        }
+        return {color: farbe};
+    }}).addTo(compareMapBonn);
