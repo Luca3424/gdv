@@ -25,30 +25,35 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 }*/
 
 // adding dara to map, coloring
-L.geoJSON(traffic1, {
-    style: function x(feature) {
-        switch (feature.properties.verkehrsstatus) {
-            case 'normales Verkehrsaufkommen':
-                farbe = '#00FF3C';
-                break;
-            case 'erhöhtes Verkehrsaufkommen':
-                    farbe = '#FFBF00'
-                break;
-            case 'Staugefahr':
-                    farbe='#FF4000'
-                break;
-            case 'Stau':
-                    farbe='#FF0000'
-                break;
-            case 'aktuell nicht ermittelbar':
-                farbe = '#81BEF7';
-                break;
-            default:
-                farbe='#000000'
-        }
-        return {color: farbe};
-    }
-}).addTo(trafficMapBonn);
+
+
+d3.json('../data/2017-12-16/verkehr-20171216000000.geojson', function (error, mapData) {
+    L.geoJSON(mapData, {
+        style:
+            function x(feature) {
+                switch (feature.properties.verkehrsstatus) {
+                    case 'normales Verkehrsaufkommen':
+                        farbe = '#00FF3C';
+                        break;
+                    case 'erhöhtes Verkehrsaufkommen':
+                        farbe = '#FFBF00'
+                        break;
+                    case 'Staugefahr':
+                        farbe = '#FF4000'
+                        break;
+                    case 'Stau':
+                        farbe = '#FF0000'
+                        break;
+                    case 'aktuell nicht ermittelbar':
+                        farbe = '#81BEF7';
+                        break;
+                    default:
+                        farbe = '#000000'
+                }
+                return {color: farbe};
+            }
+    }).addTo(trafficMapBonn)
+});
 
 //***Map for comparison***
 var compareMapBonn = L.map('map_compare_id').setView([50.735, 7.10], 13);
@@ -63,25 +68,30 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 }).addTo(compareMapBonn);
 
 
-L.geoJSON(traffic2, {style: function x(feature) {
-        switch (feature.properties.verkehrsstatus) {
-            case 'normales Verkehrsaufkommen':
-                farbe = '#00FF3C';
-                break;
-            case 'erhöhtes Verkehrsaufkommen':
-                farbe = '#FFBF00'
-                break;
-            case 'Staugefahr':
-                farbe='#FF4000'
-                break;
-            case 'Stau':
-                farbe='#FF0000'
-                break;
-            case 'aktuell nicht ermittelbar':
-                farbe = '#81BEF7';
-                break;
-            default:
-                farbe='#000000'
-        }
-        return {color: farbe};
-    }}).addTo(compareMapBonn);
+d3.json('../data/2017-12-23/verkehr-20171223000000.geojson', function (error, mapData) {
+    L.geoJSON(mapData, {
+        style:
+            function x(feature) {
+                switch (feature.properties.verkehrsstatus) {
+                    case 'normales Verkehrsaufkommen':
+                        farbe = '#00FF3C';
+                        break;
+                    case 'erhöhtes Verkehrsaufkommen':
+                        farbe = '#FFBF00'
+                        break;
+                    case 'Staugefahr':
+                        farbe = '#FF4000'
+                        break;
+                    case 'Stau':
+                        farbe = '#FF0000'
+                        break;
+                    case 'aktuell nicht ermittelbar':
+                        farbe = '#81BEF7';
+                        break;
+                    default:
+                        farbe = '#000000'
+                }
+                return {color: farbe};
+            }
+    }).addTo(compareMapBonn)
+});
