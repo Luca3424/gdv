@@ -63,7 +63,7 @@ body {
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
   color: #fff;
-  background-color: #428bca;
+  background-color: #1C9D43;
 }
 
 
@@ -92,21 +92,53 @@ div#container {
 
 div#containerTwo {
   height: 600px;
-  margin: auto;
   padding-top: 10px;
+  margin-top: 150px;
+}
+
+div#sidebar {
+    height: 600px;
+    width: 6%;
+    float: left;
+    margin-left: 15px;
+}
+
+table#traffic_legend {
+    table-layout: fixed;
+    width: 100%;
+}
+
+table#sideInfo_legend {
+    table-layout: fixed;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sideInfo_legend_icon {
+    padding-left: 30px;
+
+}
+
+.sideInfo_legend_text {
+    padding-left: 5px;
+
+}
+
+td {
+    padding-top: 15px;
 }
 
 /* Karten */
 div#map_compare_id {
   height: 600px;
-  width: 45%;
+  width: 42%;
   float: left;
   padding: 10px;
 }
 
 div#map_traffic_id {
   height: 600px;
-  width: 45%;
+  width: 42%;
   float: left;
   margin-right: 20px;
 }
@@ -121,5 +153,5 @@ div#map_poi_id {
 
 /* Footer */
 div#footer {
-
+    margin-top: 30px;
 }
