@@ -93,7 +93,12 @@ div#container {
 div#containerTwo {
   height: 600px;
   padding-top: 10px;
-  margin-top: 150px;
+  margin-top: 2%;
+  margin-bottom: 100px;
+}
+
+div#containerThree {
+    margin-top: 2%;
 }
 
 div#sidebar {
