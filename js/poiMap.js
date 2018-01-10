@@ -1,7 +1,7 @@
-//Initialisieren Map, setView auf Bonn, Angabe Zoom
+//Initialize map, setView on Bonn, set Zoom
 var mapBonn = L.map('map_poi_id').setView([50.710, 7.10], 12);
 
-//Credits zu Karte
+//credits of map
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -12,7 +12,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 
 
 //*** CUSTOM ICONS ***
-//Elektrotankstellen (Electric car charging point)
+//Electric car charging point
 var icon_CCP = L.icon({
     iconUrl: '../img/Stromtankstelle.jpg',
     iconSize:[20, 20],
@@ -33,7 +33,7 @@ var icon_PAR = L.icon({
 
 
 
-//*** ELEKTROTANKSTELLEN (CCP)***
+//*** CAR CHARGING POINTS (CCP)***
 function onEachCCPFeature(feature) {
     //fügt Marker zu Karte hinzu
     var markerCCP = L.marker(feature.geometry.coordinates, {icon:icon_CCP}).addTo(mapBonn);
@@ -43,6 +43,7 @@ function onEachCCPFeature(feature) {
         + "</b> <br> <b>Leistung: </b> max. " + feature.properties.Leistung + "kW"
         + "<br> <b>Anmerkungen: </b>" + feature.properties.Anmerkungen);
 }
+
 L.geoJSON(ElektrotankstellenStandorte, {
     onEachFeature: onEachCCPFeature
 }).addTo(mapBonn);
