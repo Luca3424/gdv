@@ -1,77 +1,27 @@
-var data_1216 = []; //traffic data of Dec 16
-var filename_base_16 = "../data/2017-12-16/verkehr-20171216";
-var filename_ending = ".geojson";
-var data_1223 = []; //traffic data of Dec 23
-var filename_base_23 = "../data/2017-12-23/verkehr-20171223";
+//change to 'mapbox.dark', 'mapbox.light', 'mapbox.emerald', or 'mapbox.high-contrast'
+var mapStyleId = 'mapbox.high-contrast';
 
-//does not work, do not use
-function initData() {
-    for (var i = 000000; i <= 001000; i = i + 500) {
-        var filename_full_16 = filename_base_16 + i + filename_ending;
-        data_1216.push(mapData);
-    }
-
-
-    for (var i = 000000; i <= 001000; i = i + 500) {
-        var filename_full_23 = filename_base_23 + i + filename_ending;
-        data_1223.push(filename_full_23);
-    }
-};
-
-/*
-for (var i = 000000; i <= 001000; i = i + 500) {
-        var filename_full_16 = filename_base_16 + i + filename_ending;
-        d3.json(filename_full_16, function (error, mapData) {
-            data_1216.push(mapData);
-        });
-    }
-
-for (var i=000000; i<=001000; i=i+500){
-    var filename_full_23 = filename_base_23 + i + filename_ending;
-    d3.json(filename_full_23, function (error, mapData) {
-        data_1223.push(mapData);
-    });
-}*/
+//restricts map area
+var bounds = [
+    [50.595, 6,93],   //Southwest
+    [50.821, 7.24]    //Northeast
+];
 
 //Initialize map, setView on Bonn, set Zoom
-var trafficMapBonn = L.map('map_traffic_id').setView([50.735, 7.10], 13);
+var trafficMapBonn = L.map('map_traffic_id', {
+    minZoom: 11,
+    maxBounds: bounds
+}).setView([50.735, 7.10], 13);
 
-//credits of map
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+//Credits of Map
+trafficLayerBonn = new L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
     '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
     'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    id: 'mapbox.streets'
+    id: mapStyleId
 }).addTo(trafficMapBonn);
 
-/*d3.json('../data/2017-12-16/verkehr-20171216000000.geojson', function (error, mapData) {
-    L.geoJSON(mapData, {
-        style:
-            function x(feature) {
-                switch (feature.properties.verkehrsstatus) {
-                    case 'normales Verkehrsaufkommen':
-                        farbe = '#00FF3C';
-                        break;
-                    case 'erhöhtes Verkehrsaufkommen':
-                        farbe = '#FFBF00';
-                        break;
-                    case 'Staugefahr':
-                        farbe = '#FF4000';
-                        break;
-                    case 'Stau':
-                        farbe = '#FF0000';
-                        break;
-                    case 'aktuell nicht ermittelbar':
-                        farbe = '#81BEF7';
-                        break;
-                    default:
-                        farbe = '#000000'
-                }
-                return {color: farbe};
-            }
-    }).addTo(trafficMapBonn)
-});*/
 
 function loadData_16(data) {
     L.geoJSON(data, {
@@ -79,27 +29,72 @@ function loadData_16(data) {
             function setColor(feature) {
                 switch (feature.properties.verkehrsstatus) {
                     case 'normales Verkehrsaufkommen':
-                        farbe = '#00FF3C';
+                        farbe = '#1C9D43';
                         break;
                     case 'erhöhtes Verkehrsaufkommen':
-                        farbe = '#FFBF00';
+                        farbe = '#E8C358'
                         break;
                     case 'Staugefahr':
-                        farbe = '#FF4000';
+                        farbe = '#F77942'
                         break;
                     case 'Stau':
-                        farbe = '#FF0000';
+                        farbe = '#B9303E'
                         break;
-                    case 'aktuell nicht ermittelbar':
-                        farbe = '#81BEF7';
-                        break;
+                    /*case 'aktuell nicht ermittelbar':
+                        farbe = '#000000';
+                        break;*/
                     default:
-                        farbe = '#000000'
+                        farbe = '#4173E5'
                 }
                 return {color: farbe};
             }
     }).addTo(trafficMapBonn);
 }
+
+//***Map for comparison***
+//Initialize map, setView on Bonn, set Zoom
+var compareMapBonn = L.map('map_compare_id', {
+    minZoom: 11,
+    zoomControl: false,
+    maxBounds: bounds
+}).setView([50.735, 7.10], 13);
+
+compareLayerBonn = new L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    maxZoom: 18,
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+    '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+    'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    id: mapStyleId,
+    accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+}).addTo(compareMapBonn);
+
+function loadData_23(data) {
+    L.geoJSON(data, {
+        style:
+            function setColor(feature) {
+                switch (feature.properties.verkehrsstatus) {
+                    case 'normales Verkehrsaufkommen':
+                        farbe = '#1C9D43';
+                        break;
+                    case 'erhöhtes Verkehrsaufkommen':
+                        farbe = '#E8C358'
+                        break;
+                    case 'Staugefahr':
+                        farbe = '#F77942'
+                        break;
+                    case 'Stau':
+                        farbe = '#B9303E'
+                        break;
+                    default:
+                        farbe = '#4173E5'
+                }
+                return {color: farbe};
+            }
+    }).addTo(compareMapBonn);
+};
+
+trafficMapBonn.sync(compareMapBonn);
+compareMapBonn.sync(trafficMapBonn);
 
 function changeData() {
     var data_timestamp = document.getElementById('timestamp').value;
@@ -116,49 +111,92 @@ function changeData() {
             loadData_16(data_16_02);
             loadData_23(data_23_02);
             break;
+        case '3':
+            loadData_16(data_16_03);
+            loadData_23(data_23_03);
+            break;
+        case '4':
+            loadData_16(data_16_04);
+            loadData_23(data_23_04);
+            break;
+        case '5':
+            loadData_16(data_16_05);
+            loadData_23(data_23_05);
+            break;
+        case '6':
+            loadData_16(data_16_06);
+            loadData_23(data_23_06);
+            break;
+        case '7':
+            loadData_16(data_16_07);
+            loadData_23(data_23_07);
+            break;
+        case '8':
+            loadData_16(data_16_08);
+            loadData_23(data_23_08);
+            break;
+        case '9':
+            loadData_16(data_16_09);
+            loadData_23(data_23_09);
+            break;
+        case '10':
+            loadData_16(data_16_10);
+            loadData_23(data_23_10);
+            break;
+        case '11':
+            loadData_16(data_16_11);
+            loadData_23(data_23_11);
+            break;
+        case '12':
+            loadData_16(data_16_12);
+            loadData_23(data_23_12);
+            break;
+        case '13':
+            loadData_16(data_16_13);
+            loadData_23(data_23_13);
+            break;
+        case '14':
+            loadData_16(data_16_14);
+            loadData_23(data_23_14);
+            break;
+        case '15':
+            loadData_16(data_16_15);
+            loadData_23(data_23_15);
+            break;
+        case '16':
+            loadData_16(data_16_16);
+            loadData_23(data_23_16);
+            break;
+        case '17':
+            loadData_16(data_16_17);
+            loadData_23(data_23_17);
+            break;
+        case '18':
+            loadData_16(data_16_18);
+            loadData_23(data_23_18);
+            break;
+        case '19':
+            loadData_16(data_16_19);
+            loadData_23(data_23_19);
+            break;
+        case '20':
+            loadData_16(data_16_20);
+            loadData_23(data_23_20);
+            break;
+        case '21':
+            loadData_16(data_16_21);
+            loadData_23(data_23_21);
+            break;
+        case '22':
+            loadData_16(data_16_22);
+            loadData_23(data_23_22);
+            break;
+        case '23':
+            loadData_16(data_16_23);
+            loadData_23(data_23_23);
+            break;
     }
 }
-
-//***Map for comparison***
-//Initialize map, setView on Bonn, set Zoom
-var compareMapBonn = L.map('map_compare_id').setView([50.735, 7.10], 13);
-
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    maxZoom: 18,
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-    '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-    'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    id: 'mapbox.streets',
-    accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
-}).addTo(compareMapBonn);
-
-function loadData_23(data) {
-    L.geoJSON(data, {
-        style:
-            function setColor(feature) {
-                switch (feature.properties.verkehrsstatus) {
-                    case 'normales Verkehrsaufkommen':
-                        farbe = '#00FF3C';
-                        break;
-                    case 'erhöhtes Verkehrsaufkommen':
-                        farbe = '#FFBF00';
-                        break;
-                    case 'Staugefahr':
-                        farbe = '#FF4000';
-                        break;
-                    case 'Stau':
-                        farbe = '#FF0000';
-                        break;
-                    case 'aktuell nicht ermittelbar':
-                        farbe = '#81BEF7';
-                        break;
-                    default:
-                        farbe = '#000000'
-                }
-                return {color: farbe};
-            }
-    }).addTo(compareMapBonn);
-};
 
 function init() {
     changeData();
