@@ -5,13 +5,13 @@ var bounds = [
     [50.807, 7.37]    //Northeast
 ];
 
-//Initialisieren Map, setView auf Bonn, Angabe Zoom
+//Initialize map, setView on Bonn, set Zoom
 var mapBonn = L.map('map_poi_id', {
     minZoom: 11,
     maxBounds: bounds
 }).setView([50.710, 7.10], 12);
 
-//Credits zu Karte
+//credits of map
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -22,7 +22,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 
 
 //*** CUSTOM ICONS ***
-//Elektrotankstellen (Electric car charging point)
+//Electric car charging point
 var icon_CCP = L.icon({
     iconUrl: '../img/Stromtankstelle.jpg',
     iconSize: [20, 20],
@@ -45,7 +45,7 @@ var icon_PAR = L.icon({
 });
 
 
-//*** ELEKTROTANKSTELLEN (CCP)***
+//*** CAR CHARGING POINTS (CCP)***
 function onEachCCPFeature(feature) {
     //fügt Marker zu Karte hinzu
     var markerCCP = L.marker(feature.geometry.coordinates, {icon: icon_CCP}).addTo(mapBonn);
@@ -87,38 +87,3 @@ function onEachPARFeature(feature) {
 L.geoJSON(ParkAndRideStandorte, {
     onEachFeature: onEachPARFeature
 }).addTo(mapBonn);
-
-/*d3.json("ParkAndRideStandorte.geojson", function(data){
-    onEachFeature: onEachPARFeature
-}).addTo(mapBonn);
-
-/*L.geoJSON(PAR_Points).addTo(mapBonn);
-onEachPARFeature(PAR_Points);
-
-/*d3.json("ParkAndRideStandorte.geojson", function(data){
-    onEachFeature: onEachPARFeature
-}).addTo(mapBonn);
-
-/*d3.json("../geojson/Donnerstag/verkehr-20171214000000.geojson", function(json) {
-    svg.selectAll("mapBonn")
-        .data(json.features)
-        .enter()
-        .append("mapBonn")
-        .attr("d", mapBonn);
-});*/
-
-/*var geojsonLayer = new L.GeoJSON.AJAX("../../geojson/ParkAndRideStandorte.geojson");
-mapBonn.addLayer(geojsonLayer);
-
-function handleGeoJSON(data) {
-    geojsonLayer.addGeoJSON(data)
-}*/
-
-/*var PAR_Points = $.ajax({
-    url:"../geojson/ParkAndRideStandorte.geojson",
-    dataType: "geojson",
-    success: console.log("Data successfully loaded."),
-    error: function (xhr) {
-        alert(xhr.statusText)
-    }
-});*/

@@ -12,12 +12,12 @@
     <orderEntry type="library" name="leaflet" level="project" />
     <orderEntry type="library" name="d3" level="project" />
     <orderEntry type="library" name="d3.v4" level="application" />
-    <orderEntry type="library" name="d3.v4" level="application" />
-    <orderEntry type="library" name="leaflet" level="application" />
     <orderEntry type="library" name="html5shiv" level="application" />
     <orderEntry type="library" name="respond" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="bootstrap" level="project" />
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="bootstrap-toggle" level="application" />
+
   </component>
 </module>
