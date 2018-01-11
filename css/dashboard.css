@@ -156,6 +156,7 @@ td {
 .slide_container {
     width: 86%; /* Width of the outside container */
     padding: 10px;
+    margin-top: 150px;
 }
 
 /* The slider itself */
