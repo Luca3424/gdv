@@ -1,7 +1,7 @@
 var mapStyle = 'mapbox.emerald';
 
 var bounds = [
-    [50.595, 6,93],   //Southwest
+    [50.595, 6.93],   //Southwest
     [50.807, 7.37]    //Northeast
 ];
 

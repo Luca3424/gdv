@@ -3,7 +3,7 @@ var mapStyleId = 'mapbox.high-contrast';
 
 //restricts map area
 var bounds = [
-    [50.595, 6,93],   //Southwest
+    [50.595, 6.93],   //Southwest
     [50.821, 7.24]    //Northeast
 ];
 
