@@ -1,12 +1,7 @@
-/*
- * Base structure
- */
 
-/* Move down content because we have a fixed navbar that is 50px tall */
 body {
-  padding-top: 50px;
+    background: #000000;
 }
-
 
 /*
  * Global add-ons
@@ -25,10 +20,7 @@ body {
   border: 0;
 }
 
-/*
- * Sidebar
- */
-
+/* Navbar */
 /* Hide for mobile, show later */
 .sidebar {
   display: none;
@@ -44,13 +36,13 @@ body {
     padding: 20px;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: #f5f5f5;
     border-right: 1px solid #eee;
   }
 }
 
 /* Sidebar navigation */
 .nav-sidebar {
+  background-color: #000000;
   margin-right: -21px; /* 20px padding + 1px border */
   margin-bottom: 20px;
   margin-left: -20px;
@@ -59,18 +51,21 @@ body {
   padding-right: 20px;
   padding-left: 20px;
 }
-.nav-sidebar > .active > a,
-.nav-sidebar > .active > a:hover,
-.nav-sidebar > .active > a:focus {
-  color: #fff;
-  background-color: #1C9D43;
+
+.nav-sidebar > li > a:hover{
+    background-color: #3c763d;
+    color: #000000;
 }
 
+.nav-sidebar > a:focus {
+    color: #000000;
+    background-color: #3c763d;
+}
 
-/*
- * Main content
- */
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover
 
+/* Main content*/
 @media (min-width: 768px) {
   .main {
     padding-right: 10px;
@@ -83,24 +78,47 @@ body {
 
 
 /* Container */
-div#container {
+div#traffic_container {
   height: 600px;
   margin: auto;
   padding: 10px;
   margin-bottom: 100px;
 }
 
-div#containerTwo {
+div#poi_container {
   height: 600px;
   padding-top: 10px;
   margin-top: 2%;
   margin-bottom: 100px;
 }
 
-div#containerThree {
+div#overview_container {
     margin-top: 2%;
 }
 
+/* Maps */
+div#map_compare_id {
+    height: 600px;
+    width: 42%;
+    float: left;
+    padding: 10px;
+}
+
+div#map_traffic_id {
+    height: 600px;
+    width: 42%;
+    float: left;
+    margin-right: 20px;
+}
+
+div#map_poi_id {
+    height: 500px;
+    width: 100%;
+    margin: auto;
+}
+
+
+/* Traffic Maps Legend */
 div#sidebar {
     height: 600px;
     width: 6%;
@@ -133,31 +151,9 @@ td {
     padding-top: 15px;
 }
 
-/* Karten */
-div#map_compare_id {
-  height: 600px;
-  width: 42%;
-  float: left;
-  padding: 10px;
-}
-
-div#map_traffic_id {
-  height: 600px;
-  width: 42%;
-  float: left;
-  margin-right: 20px;
-}
-
-div#map_poi_id {
-  height: 500px;
-  width: 100%;
-  margin: auto;
-}
-/* Ende Karten */
-
 
 /* Slider */
-.slidecontainer {
+.slide_container {
     width: 86%; /* Width of the outside container */
     padding: 10px;
 }
@@ -165,10 +161,9 @@ div#map_poi_id {
 /* The slider itself */
 .slider {
     -webkit-appearance: none;  /* Override default CSS styles */
-    appearance: none;
     width: 100%; /* Full-width */
-    height: 25px; /* Specified height */
-    background: #d3d3d3; /* Grey background */
+    height: 25px;
+    background: #3c763d;
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
@@ -183,7 +178,6 @@ div#map_poi_id {
 /* The slider handle (use webkit (Chrome, Opera, Safari, Edge) and moz (Firefox) to override default look) */
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none; /* Override default look */
-    appearance: none;
     width: 44px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
     background: url(../img/car_slider.png); /* Car as slider icon */
@@ -197,10 +191,22 @@ div#map_poi_id {
     cursor: pointer; /* Cursor on hover */
 }
 
-/* Ende Slider */
-
 
 /* Footer */
 div#footer {
     margin-top: 30px;
+}
+
+
+/* Formatting Text */
+h1, h2, span, p, td, legend, a {
+    color: #BDBDBD;
+}
+
+.navbar{
+    background-color: #3c763d;
+}
+
+.navbar-brand{
+    color: #000000;
 }

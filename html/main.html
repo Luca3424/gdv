@@ -40,154 +40,140 @@
 </head>
 
 <body onload="init()">
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="true" aria-controls="navbar">
-                <span class="sr-only">Navigation ein-/ausblenden</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">TraVis Bonn</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-            </ul>
-        </div>
+
+<!-- header -->
+<div class="navbar">
+    <span class="navbar-brand" href="#">TraVis Bonn</span>
+</div>
+
+<div>
+    <!-- navbar -->
+    <div class="col-sm-3 col-md-1 sidebar">
+        <ul class="nav nav-sidebar">
+            <li class="active"><a href="#traffic_container">Verkehrslage <span class="sr-only">(aktuell)</span></a></li>
+            <li><a href="#overview_container">Tagesübersicht</a></li>
+            <li><a href="#poi_container">Ansätze</a></li>
+        </ul>
     </div>
-</nav>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-                <li class="active"><a href="#">Überblick <span class="sr-only">(aktuell)</span></a></li>
-                <li><a href="#verkehr">Verkehrslage</a></li>
-                <li><a href="#ansätze">Ansätze</a></li>
-                <li><a href="#uebersicht">Tagesübersicht</a></li>
-            </ul>
-        </div>
+    <!-- page content -->
+    <div class="col-sm-9 col-sm-offset-3 col-md-11 col-md-offset-1 main">
+        <hr/>
+        <h1 class="page-header"><span style="color: #1C9D43">Tra</span>ffic <span style="color: #F77942">Vis</span>ualization
+            <span style="color: #B9303E">Bonn</span></h1>
 
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <hr />
-            <h1 class="page-header"><span style="color: #1C9D43">Tra</span>ffic <span style="color: #F77942">Vis</span>ualization
-                <span style="color: #B9303E">Bonn</span></h1>
+        <div id="traffic_container">
+            <h1 id="verkehr"> Verkehrslage </h1>
+            <h2>Samstag, 16.12.2017 vs. Samstag, 23.12.2017</h2>
+            <div id="map_traffic_id"></div>
+            <div id="map_compare_id"></div>
+            <script type="text/javascript" src="../js/L.Map.Sync.js"></script>
+            <script type="text/javascript" src="../data/test/traffic_2017-12-16.js"></script>
+            <script type="text/javascript" src="../data/test/traffic_2017-12-23.js"></script>
+            <script type="text/javascript" src="../js/trafficMap.js"></script>
 
-            <div id="container">
-                <h1 id="verkehr"> Verkehrslage </h1>
-                <h2>Samstag, 16.12.2017 vs. Samstag, 23.12.2017</h2>
-                <div id="map_traffic_id"></div>
-                <div id="map_compare_id"></div>
-                <script type="text/javascript" src="../js/L.Map.Sync.js"></script>
-                <script type="text/javascript" src="../data/test/traffic_2017-12-16.js"></script>
-                <script type="text/javascript" src="../data/test/traffic_2017-12-23.js"></script>
-                <script type="text/javascript" src="../js/trafficMap.js"></script>
-
-                <div id="sidebar">
-                    <!-- <input id="toggle-event" type="checkbox" checked data-toggle="toggle" data-on="Light<br>on"
-                           data-off="Light<br>off" data-onstyle="success">
-                    <div id="console-event"></div>
-                    <script>
-                        /*$(function () {
-                            $('#toggle-event').change(function () {
-                                $('#console-event').html('Toggle: ' + mapStyleId)
-                                if ($(this).prop('checked')) {
-                                    mapStyleId = 'mapbox.emerald';
-                                } else {
-                                    mapStyleId = 'mapbox.dark';
-                                }
-                                return mapStyleId;
-                            })
+            <div id="sidebar">
+                <!-- <input id="toggle-event" type="checkbox" checked data-toggle="toggle" data-on="Light<br>on"
+                       data-off="Light<br>off" data-onstyle="success">
+                <div id="console-event"></div>
+                <script>
+                    /*$(function () {
+                        $('#toggle-event').change(function () {
+                            $('#console-event').html('Toggle: ' + mapStyleId)
+                            if ($(this).prop('checked')) {
+                                mapStyleId = 'mapbox.emerald';
+                            } else {
+                                mapStyleId = 'mapbox.dark';
+                            }
+                            return mapStyleId;
                         })
-                        $(function () {
-                            $('#toggle-event').change(function () {
-                                trafficLayerBonn.redraw();
-                                compareLayerBonn.redraw();
-                            })
-                        })*/
-                    </script> -->
-                    <div class="legend">
-                        <legend>Legende:</legend>
-
-                        <table id="traffic_legend">
-                            <tr>
-                                <td height="50"><img src="../img/legend_green.png" width="25" height="25"></td>
-                                <td height="50"> normales Verkehrsaufkommen</td>
-                            </tr>
-
-                            <tr>
-                                <td height="50"><img src="../img/legend_yellow.png" width="25" height="25"></td>
-                                <td height="50">erhöhtes Verkehrsaufkommen</td>
-                            </tr>
-
-                            <tr>
-                                <td height="50"><img src="../img/legend_orange.png" width="25" height="25"></td>
-                                <td height="50">Staugefahr</td>
-                            </tr>
-
-                            <tr>
-                                <td height="50"><img src="../img/legend_red.png" width="25" height="25"></td>
-                                <td height="50">Stau</td>
-                            </tr>
-
-                            <tr>
-                                <td height="50"><img src="../img/legend_blue.png" width="25" height="25"></td>
-                                <td height="50">nicht ermittelbar</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SLIDER -->
-            <div class="slidecontainer">
-                <input type="range" min="0" max="23" value="12" class="slider" id="time_slider" oninput="changeValue()">
-                <span>Uhrzeit:</span> <span id="timestamp"></span> <span>:00 Uhr</span>
-            </div>
-
-            <br>
-
-            <div id="containerTwo">
-                <h1 id="ansätze">Zusätzliche Informationen</h1>
-                <h2 id="elektro">Elektrotankstellen, Park&Ride, Carsharing</h2>
-                <div id="map_poi_id"></div>
-                <!-- Einbinden GeoJSONs -->
-                <script type="text/javascript" src="../data/poi/Elektrotankstellen.js"></script>
-                <script type="text/javascript" src="../data/poi/Carsharing.js"></script>
-                <script type="text/javascript" src="../data/poi/ParkAndRide.js"></script>
-                <script type="text/javascript" src="../js/poiMap.js"></script>
+                    })
+                    $(function () {
+                        $('#toggle-event').change(function () {
+                            trafficLayerBonn.redraw();
+                            compareLayerBonn.redraw();
+                        })
+                    })*/
+                </script> -->
                 <div class="legend">
-                    <table id="sideInfo_legend">
-                        <tr id="sideInfo_legend_row">
-                            <td class="sideInfo_legend_icon" height="50"><img src="../img/Cambio.png" width="25"
-                                                                              height="25"></td>
-                            <td class="sideInfo_legend_text" height="50"> Cambio CarSharing Station</td>
+                    <legend>Legende:</legend>
 
-                            <td class="sideInfo_legend_icon" height="50"><img src="../img/Stromtankstelle.jpg"
-                                                                              width="25" height="25"></td>
-                            <td class="sideInfo_legend_text" height="50"> Stromtankstelle</td>
+                    <table id="traffic_legend">
+                        <tr>
+                            <td height="50"><img src="../img/legend_green.png" width="25" height="25"></td>
+                            <td height="50"> normales Verkehrsaufkommen</td>
+                        </tr>
 
-                            <td class="sideInfo_legend_icon" height="50"><img src="../img/P+R.jpg" width="25"
-                                                                              height="25"></td>
-                            <td class="sideInfo_legend_text" height="50"> Park+Ride</td>
+                        <tr>
+                            <td height="50"><img src="../img/legend_yellow.png" width="25" height="25"></td>
+                            <td height="50">erhöhtes Verkehrsaufkommen</td>
+                        </tr>
+
+                        <tr>
+                            <td height="50"><img src="../img/legend_orange.png" width="25" height="25"></td>
+                            <td height="50">Staugefahr</td>
+                        </tr>
+
+                        <tr>
+                            <td height="50"><img src="../img/legend_red.png" width="25" height="25"></td>
+                            <td height="50">Stau</td>
+                        </tr>
+
+                        <tr>
+                            <td height="50"><img src="../img/legend_blue.png" width="25" height="25"></td>
+                            <td height="50">nicht ermittelbar</td>
                         </tr>
                     </table>
                 </div>
             </div>
+        </div>
 
-            <div id="containerThree">
-                <h1 id="uebersicht">Tagesübersicht</h1>
-                <div id="dayOverview"></div>
-                <!-- Einbinden Javascript -->
-                <script type="text/javascript" src="../js/dayOverview.js"></script>
-            </div>
+        <!-- slider -->
+        <div class="slide_container">
+            <input type="range" min="0" max="23" value="12" class="slider" id="time_slider" oninput="changeValue()">
+            <span>Uhrzeit:</span> <span id="timestamp"></span> <span>:00 Uhr</span>
+        </div>
 
-            <div id="footer">
-                <p id="footerText">GDV WS2017/18 bei Prof. Dr. Till Nagel<br>
-                    Präsentiert von den <b>Rittern der Lamarunde</b> - Hanna, Regina, Luca, Stefanie</p>
+        <!-- chart -->
+        <div id="overview_container">
+            <h1 id="uebersicht">Tagesübersicht</h1>
+            <div id="dayOverview"></div>
+            <!-- Einbinden Javascript -->
+            <script type="text/javascript" src="../js/dayOverview.js"></script>
+        </div>
+
+        <!-- poi map -->
+        <div id="poi_container">
+            <h1 id="ansaetze">Zusätzliche Informationen</h1>
+            <h2 id="elektro">Elektrotankstellen, Park&Ride, Carsharing</h2>
+            <div id="map_poi_id"></div>
+            <!-- Einbinden GeoJSONs -->
+            <script type="text/javascript" src="../data/poi/Elektrotankstellen.js"></script>
+            <script type="text/javascript" src="../data/poi/Carsharing.js"></script>
+            <script type="text/javascript" src="../data/poi/ParkAndRide.js"></script>
+            <script type="text/javascript" src="../js/poiMap.js"></script>
+            <div class="legend">
+                <table id="sideInfo_legend">
+                    <tr id="sideInfo_legend_row">
+                        <td class="sideInfo_legend_icon" height="50"><img src="../img/Cambio.png" width="25"
+                                                                          height="25"></td>
+                        <td class="sideInfo_legend_text" height="50"> Cambio CarSharing Station</td>
+
+                        <td class="sideInfo_legend_icon" height="50"><img src="../img/Stromtankstelle.jpg"
+                                                                          width="25" height="25"></td>
+                        <td class="sideInfo_legend_text" height="50"> Stromtankstelle</td>
+
+                        <td class="sideInfo_legend_icon" height="50"><img src="../img/P+R.jpg" width="25"
+                                                                          height="25"></td>
+                        <td class="sideInfo_legend_text" height="50"> Park+Ride</td>
+                    </tr>
+                </table>
             </div>
+        </div>
+
+        <div id="footer">
+            <p id="footerText">GDV WS2017/18 bei Prof. Dr. Till Nagel<br>
+                Präsentiert von den <b>Rittern der Lamarunde</b> - Hanna, Regina, Luca, Stefanie</p>
         </div>
     </div>
 </div>
