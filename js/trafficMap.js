@@ -13,7 +13,7 @@ var trafficMapBonn = L.map('map_traffic_id', {
     maxBounds: bounds
 }).setView([50.735, 7.10], 13);
 
-//Credits of Map
+//add credits to map
 trafficLayerBonn = new L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -22,7 +22,7 @@ trafficLayerBonn = new L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}
     id: mapStyleId
 }).addTo(trafficMapBonn);
 
-
+//load traffic data to map, add colors
 function loadData_16(data) {
     L.geoJSON(data, {
         style:
@@ -59,6 +59,7 @@ var compareMapBonn = L.map('map_compare_id', {
     maxBounds: bounds
 }).setView([50.735, 7.10], 13);
 
+//add credits to map
 compareLayerBonn = new L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -68,6 +69,7 @@ compareLayerBonn = new L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}
     accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
 }).addTo(compareMapBonn);
 
+//load traffic data to map, add colors
 function loadData_23(data) {
     L.geoJSON(data, {
         style:
@@ -91,13 +93,18 @@ function loadData_23(data) {
                 return {color: farbe};
             }
     }).addTo(compareMapBonn);
-};
+}
 
+//sync maps to one another
 trafficMapBonn.sync(compareMapBonn);
 compareMapBonn.sync(trafficMapBonn);
 
+
+// *** FUNCTIONS ***
+
+//calls loadData functions according to time on timeslider
 function changeData() {
-    var data_timestamp = document.getElementById('timestamp').value;
+    var data_timestamp = document.getElementById("time_slider").value;
     switch (data_timestamp) {
         case '0':
             loadData_16(data_16_00);
@@ -198,7 +205,13 @@ function changeData() {
     }
 }
 
-function init() {
+//changes "Uhrzeit" text element when slider is moved
+function changeValue() {
+    document.getElementById("timestamp").innerHTML = document.getElementById("time_slider").value;
     changeData();
-    document.getElementById('timestamp').addEventListener("change", changeData);
-};
+}
+
+function init() {
+    changeData(); //load maps
+    changeValue(); //display slider value
+}
