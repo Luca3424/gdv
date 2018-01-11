@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-<<<<<<< HEAD
     <file url="PROJECT" libraries="{JQuery v3.2.1, bootstrap, d3.v3, d3.v4, html5shiv, jquery, leaflet, respond}" />
-=======
-    <file url="PROJECT" libraries="{bootstrap, bootstrap-toggle, d3.v4, html5shiv, jquery, leaflet, respond}" />
->>>>>>> 62631a75793bae98019d4225891f035269f13505
   </component>
 </project>
