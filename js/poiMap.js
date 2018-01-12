@@ -1,4 +1,4 @@
-var mapStyle = 'mapbox.emerald';
+var mapStyle = 'mapbox.dark';
 
 var bounds = [
     [50.595, 6.93],   //Southwest
