@@ -52,7 +52,7 @@
         <ul class="nav nav-sidebar">
             <li class="active"><a href="#traffic_container">Verkehrslage <span class="sr-only">(aktuell)</span></a></li>
             <li><a href="#overview_container">Tagesübersicht</a></li>
-            <li><a href="#poi_container">Ansätze</a></li>
+            <li><a href="#poi_container">Zusätzliche Informationen</a></li>
         </ul>
     </div>
 
@@ -62,9 +62,14 @@
         <h1 class="page-header"><span style="color: #1C9D43">Tra</span>ffic <span style="color: #F77942">Vis</span>ualization
             <span style="color: #B9303E">Bonn</span></h1>
 
+
         <div id="traffic_container">
             <h1 id="verkehr"> Verkehrslage </h1>
             <h2>Samstag, 16.12.2017 vs. Samstag, 23.12.2017</h2>
+            <div class="text">
+                <p>Die folgende Visualisierung soll einen Vergleich zweier Samstage darstellen.
+                    Die linke Visualisierung zeigt den 16.12.2017 und die rechte Visualisierung zeigt den 23.12.2017.</p>
+            </div>
             <div id="map_traffic_id"></div>
             <div id="map_compare_id"></div>
             <script type="text/javascript" src="../js/L.Map.Sync.js"></script>
@@ -139,6 +144,9 @@
         <div id="overview_container">
             <h1 id="uebersicht">Tagesübersicht</h1>
             <div id="dayOverview"></div>
+            <div class="text">
+                <p>Dieses Diagramm zeigt den Verlauf der Verkehrslage über einen Tag.</p>
+            </div>
             <!-- Einbinden Javascript -->
             <script type="text/javascript" src="../js/dayOverview.js"></script>
         </div>
@@ -147,6 +155,9 @@
         <div id="poi_container">
             <h1 id="ansaetze">Zusätzliche Informationen</h1>
             <h2 id="elektro">Elektrotankstellen, Park&Ride, Carsharing</h2>
+            <div class="text">
+                <p>Auf dieser Karte werden die Standorte der Elektrotankstellen, Park&Ride und Carsharing-Stationen gezeigt.</p>
+            </div>
             <div id="map_poi_id"></div>
             <!-- Einbinden GeoJSONs -->
             <script type="text/javascript" src="../data/poi/Elektrotankstellen.js"></script>

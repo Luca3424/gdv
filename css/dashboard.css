@@ -211,3 +211,8 @@ h1, h2, span, p, td, legend, a {
 .navbar-brand{
     color: #000000;
 }
+
+
+.text {
+    font-size: 20px;
+}
