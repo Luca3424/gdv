@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.png">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +11,7 @@
 
     <!-- D3 JS -->
     <title>TraVis Bonn</title>
-    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
@@ -136,17 +136,51 @@
             <span>Uhrzeit:</span> <span id="timestamp"></span> <span>: 00 Uhr</span>
         </div>
 
+
+
         <!-- chart -->
         <div id="overview_container">
-            <h1 id="uebersicht">Tagesübersicht</h1>
-            <div id="dayOverview"></div>
-            <!-- Einbinden Javascript -->
+            <h1 id="uebersicht">Tagesübersichten</h1>
+            <div id="dayOverview">
+            </div>
+            <svg width=960" height="500"></svg>
+            <!--<svg id="overview_16">
+                <g id="overview_16_00">
+                    <rect x=10 y=205 height=20 width=10 fill='#1C9D43' class="NV"></rect>
+                    <rect x=10 y=225 height=25 width=10 fill='#E8C358' class="EV"></rect>
+                </g>
+                <g id="overview_16_01">
+                    <rect x=30 y=235 height=5 width=10 fill='#1C9D43' class="NV"></rect>
+                    <rect x=30 y=240 height=10 width=10 fill='#E8C358' class="EV"></rect>
+                </g>
+                <g id="overview_16_02">
+                    <rect x=50 y=220 height=10 width=10 fill='#1C9D43' class="NV"></rect>
+                    <rect x=50 y=230 height=20 width=10 fill='#E8C358' class="EV"></rect>
+                </g>
+            </svg>
+            <svg id="overview_23">
+                <g id="overview_23_00">
+                    <rect x=10 y=205 height=20 width=10 fill='#1C9D43' class="NV"></rect>
+                    <rect x=10 y=225 height=25 width=10 fill='#E8C358' class="EV"></rect>
+                </g>
+                <g id="overview_16_01">
+                    <rect x=30 y=235 height=5 width=10 fill='#1C9D43' class="NV"></rect>
+                    <rect x=30 y=240 height=10 width=10 fill='#E8C358' class="EV"></rect>
+                </g>
+                <g id="overview_16_02">
+                    <rect x=50 y=220 height=10 width=10 fill='#1C9D43' class="NV"></rect>
+                    <rect x=50 y=230 height=20 width=10 fill='#E8C358' class="EV"></rect>
+                </g>
+            </svg>
+            <!-- Einbinden Javascript
+            <script type="text/javascript" src="../data/test/traffic_2017-12-16.js"></script>
+            <script type="text/javascript" src="../data/test/traffic_2017-12-23.js"></script>-->
             <script type="text/javascript" src="../js/dayOverview.js"></script>
         </div>
 
         <!-- poi map -->
         <div id="poi_container">
-            <h1 id="ansaetze">Zusätzliche Informationen</h1>
+            <h1 id="ansaetze">Ansätze</h1>
             <h2 id="elektro">Elektrotankstellen, Park&Ride, Carsharing</h2>
             <div id="map_poi_id"></div>
             <!-- Einbinden GeoJSONs -->

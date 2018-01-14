@@ -1,3 +1,9 @@
+function init() {
+    changeData(); //load maps
+    changeValue(); //display slider value
+}
+
+
 /*var data_1216 = []; //traffic data of Dec 16
 var filename_base_16 = "../data/2017-12-16/verkehr-20171216";
 var data_1223 = []; //traffic data of Dec 23

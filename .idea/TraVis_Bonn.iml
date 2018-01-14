@@ -18,6 +18,8 @@
     <orderEntry type="library" name="bootstrap" level="project" />
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="bootstrap-toggle" level="application" />
-
+    <orderEntry type="library" name="d3.v3" level="application" />
+    <orderEntry type="library" name="JQuery v3.2.1" level="project" />
+    <orderEntry type="library" name="w3" level="application" />
   </component>
 </module>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>D3: Stack layout stacked bar chart</title>
+    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+    <!-- MainJS -->
+    <script type="text/javascript" src="../js/mainJS.js"></script>
+    <style type="text/css">
+        /* No style rules here yet */
+    </style>
+</head>
+<body>
+<script type="text/javascript" src="../data/test/traffic_2017-12-16.js"></script>
+<script type="text/javascript">
+
+    //array with all geojsons of Dec 16
+    var data_16 = [data_16_00, data_16_01, data_16_02, data_16_03, data_16_04, data_16_05, data_16_06, data_16_07, data_16_08, data_16_09,
+        data_16_10, data_16_11, data_16_12, data_16_13, data_16_14, data_16_15, data_16_16, data_16_17, data_16_18, data_16_19,
+        data_16_20, data_16_21, data_16_22, data_16_23];
+
+    //array stores Objects including sorted traffic data
+    //Index is according to time, e. g. data_intermediate[15] -> 3PM
+    var data_intermediate = new Array(24);
+    /* var data_intermediate = [
+        { //data for midnight
+            normal: ...,
+            erhoeht ...,
+            staugefahr: ...,
+            stau: ...,
+            nicht_ermittelbar: ...,
+            other: ...
+         },
+         { //data for 1AM
+            normal: ...,
+            erhoeht ...,
+            staugefahr: ...,
+            stau: ...,
+            nicht_ermittelbar: ...,
+            other: ...
+         },
+         .... //continues for all hours
+     ];
+    */
+
+    //two dimensional Array: inner Array stores objects of a single counted "verkehrsstatus" at a given time
+    //outer Array stores all times and their respective number for the different "verkehrsstatus"
+    //data_reformatted[0] -> array of Objects which store the number of streets with "normale Verkehrsbelastung"
+    //data_reformatted[0][6] -> object which stores the number of streets with "normale Verkehrsbelastung" at 6AM
+    //data_reformatted[0][6] returns two values: x (time) and y (number)
+    //length = 6 different "verkehrsstatus"
+    var data_reformatted = new Array(6);
+    /* var data_reformatted = [
+        [ //data for "normales Verkehrsaufommen"
+          //y is the number counted with count()
+            { x:0, y: ...}, //midnight
+            { x:1, y: ...}, //1AM
+            { x:2, y: ...}, //2AM
+            ... //continues for all hours
+         ],
+         [ //data for "erhoehte Verkehrsbelastung"
+            { x:0, y: ...}, //midnight
+            { x:1, y: ...}, //1AM
+            { x:2, y: ...}, //2AM
+            ... //continues for all hours
+         ],
+         .... //repeats for all different status
+     ];
+    */
+
+
+    //turns data_reformatted into two-dimensional Array
+    function init_data_formatted(){
+        for(var i=0; i<6; i++){
+            data_reformatted[i] = new Array(24); //24 different times
+        }
+    }
+
+    function count(data) {
+        //initializing all vars with 0
+        var normal = 0,
+            erhoeht = 0,
+            staugefahr = 0,
+            nicht_ermittelbar = 0,
+            stau = 0,
+            other = 0;
+
+        //iterates over all features in a geojson
+        for (var i = 0; i <= 108; i++) {
+            //counts all instances of the different "verkehrsstatus" of all roads at a given time
+            switch (data.features[i].properties.verkehrsstatus) {
+                case 'normales Verkehrsaufkommen':
+                    normal++;
+                    break;
+                case 'erhoehte Verkehrsbelastung':
+                    erhoeht++;
+                    break;
+                case 'Staugefahr':
+                    staugefahr++;
+                    break;
+                case 'Stau':
+                    stau++;
+                    break;
+                case 'aktuell nicht ermittelbar':
+                    nicht_ermittelbar++;
+                    break;
+                default:
+                    other++;
+                    break;
+            }//switch
+            //console.log(i);
+        }//for
+
+        //returns Object with traffic data
+        return {
+            normal: normal,
+            erhoeht: erhoeht,
+            staugefahr: staugefahr,
+            stau: stau,
+            nicht_ermittelbar: nicht_ermittelbar,
+            other: other
+        };
+    }
+
+    function reformatData() {
+        var verkehrsstatus = new Array (6);
+
+        for (var i = 0; i < 24; i++) {
+            verkehrsstatus = [
+                data_intermediate[i].normal,
+                data_intermediate[i].erhoeht,
+                data_intermediate[i].staugefahr,
+                data_intermediate[i].stau,
+                data_intermediate[i].nicht_ermittelbar,
+                data_intermediate[i].other
+            ];
+
+            for(var j=0; j<6; j++){
+                data_reformatted[j][i] = {
+                    x: i,
+                    y: verkehrsstatus[j]
+                };
+            }//inner for
+        }//outer for
+    }//function
+
+    function formatData() {
+        //iterates over all geojson elements of data_16
+        for (var i = 0; i <= 23; i++) {
+            data_intermediate[i] = count(data_16[i]);
+            //console.log(i);
+        }
+
+        reformatData();
+
+        //reformats into final format
+        //var stack = d3.stack();
+        //d3.stack()(data_reformatted);
+    }
+
+    init_data_formatted();
+    formatData();
+
+    //Width and height
+    var w = 500;
+    var h = 300;
+
+    //Set up stack method
+    var stack = d3.layout.stack();
+
+    //Data, stacked
+    stack(data_reformatted);
+
+    //Set up scales
+    var xScale = d3.scale.ordinal()
+        .domain(d3.range(data_reformatted[0].length))
+        .rangeRoundBands([0, w], 0.05);
+
+    var yScale = d3.scale.linear()
+        .domain([0,
+            d3.max(data_reformatted, function(d) {
+                return d3.max(d, function(d) {
+                    return d.y0 + d.y;
+                });
+            })
+        ])
+        .range([0, h]);
+
+    //Easy colors accessible via a 10-step ordinal scale
+    var colors = d3.scale.category10();
+
+    //Create SVG element
+    var svg = d3.select("svg16")
+        .append("svg")
+        .attr("width", w)
+        .attr("height", h);
+
+    // Add a group for each row of data
+    var groups = svg.selectAll("g")
+        .data(data_reformatted)
+        .enter()
+        .append("g")
+        .style("fill", function(d, i) {
+            return colors(i);
+        });
+
+    // Add a rect for each data value
+    var rects = groups.selectAll("rect")
+        .data(function(d) { return d; })
+        .enter()
+        .append("rect")
+        .attr("x", function(d, i) {
+            return xScale(i);
+        })
+        .attr("y", function(d) {
+            return yScale(d.y0);
+        })
+        .attr("height", function(d) {
+            return yScale(d.y);
+        })
+        .attr("width", xScale.rangeBand());
+
+</script>
+</body>
+</html>

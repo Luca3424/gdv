@@ -192,10 +192,21 @@ td {
     cursor: pointer; /* Cursor on hover */
 }
 
+/* Day Overview Chart */
+.axis .domain {
+    display: none;
+}
+
 
 /* Footer */
 div#footer {
     margin-top: 30px;
+}
+
+svg{
+    background-color: #ffffff;
+    width: 42%;
+    height: 400px;
 }
 
 

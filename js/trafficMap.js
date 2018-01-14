@@ -24,21 +24,23 @@ trafficLayerBonn = new L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}
 
 //load traffic data to map, add colors
 function loadData_16(data) {
+    console.log("Before loadData_16 successful");
     L.geoJSON(data, {
         style:
             function setColor(feature) {
+            //var farbe;
                 switch (feature.properties.verkehrsstatus) {
                     case 'normales Verkehrsaufkommen':
                         farbe = '#1C9D43';
                         break;
-                    case 'erhöhtes Verkehrsaufkommen':
-                        farbe = '#E8C358'
+                    case 'erhoehte Verkehrsbelastung':
+                        farbe = '#E8C358';
                         break;
                     case 'Staugefahr':
-                        farbe = '#F77942'
+                        farbe = '#F77942';
                         break;
                     case 'Stau':
-                        farbe = '#B9303E'
+                        farbe = '#B9303E';
                         break;
                     /*case 'aktuell nicht ermittelbar':
                         farbe = '#000000';
@@ -49,6 +51,7 @@ function loadData_16(data) {
                 return {color: farbe};
             }
     }).addTo(trafficMapBonn);
+    console.log("After loadData_16 successful");
 }
 
 //***Map for comparison***
@@ -71,28 +74,32 @@ compareLayerBonn = new L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}
 
 //load traffic data to map, add colors
 function loadData_23(data) {
+    console.log("Before LoadData_23 successful");
     L.geoJSON(data, {
         style:
             function setColor(feature) {
+            //var farbe;
                 switch (feature.properties.verkehrsstatus) {
                     case 'normales Verkehrsaufkommen':
                         farbe = '#1C9D43';
                         break;
-                    case 'erhöhtes Verkehrsaufkommen':
-                        farbe = '#E8C358'
+                    case 'erhoehte Verkehrsbelastung':
+                        farbe = '#E8C358';
                         break;
                     case 'Staugefahr':
-                        farbe = '#F77942'
+                        farbe = '#F77942';
                         break;
                     case 'Stau':
-                        farbe = '#B9303E'
+                        farbe = '#B9303E';
                         break;
                     default:
                         farbe = '#4173E5'
                 }
+                console.log("Farbe 16: " + farbe);
                 return {color: farbe};
             }
     }).addTo(compareMapBonn);
+    console.log("After LoadData_23 successful");
 }
 
 //sync maps to one another
@@ -105,6 +112,7 @@ compareMapBonn.sync(trafficMapBonn);
 //calls loadData functions according to time on timeslider
 function changeData() {
     var data_timestamp = document.getElementById("time_slider").value;
+    console.log("Before ChangeData successful");
     switch (data_timestamp) {
         case '0':
             loadData_16(data_16_00);
@@ -203,15 +211,11 @@ function changeData() {
             loadData_23(data_23_23);
             break;
     }
+    console.log("After ChangeData successful");
 }
 
 //changes "Uhrzeit" text element when slider is moved
 function changeValue() {
     document.getElementById("timestamp").innerHTML = document.getElementById("time_slider").value;
     changeData();
-}
-
-function init() {
-    changeData(); //load maps
-    changeValue(); //display slider value
 }
