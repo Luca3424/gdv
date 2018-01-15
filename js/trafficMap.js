@@ -31,7 +31,7 @@ function loadData_16(data) {
                     case 'normales Verkehrsaufkommen':
                         farbe = '#1C9D43';
                         break;
-                    case 'erhöhtes Verkehrsaufkommen':
+                    case 'erhoehte Verkehrsbelastung':
                         farbe = '#E8C358'
                         break;
                     case 'Staugefahr':
@@ -78,7 +78,7 @@ function loadData_23(data) {
                     case 'normales Verkehrsaufkommen':
                         farbe = '#1C9D43';
                         break;
-                    case 'erhöhtes Verkehrsaufkommen':
+                    case 'erhoehte Verkehrsbelastung':
                         farbe = '#E8C358'
                         break;
                     case 'Staugefahr':
