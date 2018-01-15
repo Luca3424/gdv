@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Die 3 Meta-Tags oben *müssen* zuerst im head stehen; jeglicher sonstiger head-Inhalt muss *nach* diesen Tags kommen -->
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -39,18 +38,18 @@
 
 <body onload="init()">
 
-<!-- header -->
+<!-- navbar top -->
 <div class="navbar navbar-fixed-top">
     <span class="navbar-brand" href="#">TraVis Bonn</span>
 </div>
 
 <div>
-    <!-- navbar -->
+    <!-- navbar left -->
     <div class="col-sm-3 col-md-1 sidebar">
         <ul class="nav nav-sidebar">
             <li class="active"><a href="#traffic_container">Verkehrslage <span class="sr-only">(aktuell)</span></a></li>
             <li><a href="#overview_container">Tagesübersicht</a></li>
-            <li><a href="#poi_container">Ansätze</a></li>
+            <li><a href="#poi_container">Lösungen</a></li>
             <li><a href="#hyp_container">Hypothesen</a></li>
         </ul>
     </div>
@@ -81,70 +80,43 @@
 
 
         <div id="traffic_container">
-            <br>
             <h1 id="verkehr"> Verkehrslage </h1>
+            <h3 id="compare_headline">Samstag, 16.12.2017 vs. Samstag, 23.12.2017</h3>
             <div class="text">
-                <p>Die folgende Visualisierung stellt einen Vergleich zweier Samstage dar.
+                <p>Diese Visualisierung stellt einen Vergleich zweier Samstage dar.
                     Die linke Karte zeigt den 16.12.2017 und die rechte Karte den vermeintlich hektischen
                     23.12.2017, der letzte Tag in 2017, an dem man Besorgungen für den Weihnachtsabend erledigen
                     konnte.</p>
             </div>
-            <h3 id="compare_headline">Samstag, 16.12.2017 vs. Samstag, 23.12.2017</h3>
             <div id="map_traffic_id"></div>
             <div id="map_compare_id"></div>
+            <!-- Einbinden GeoJSONs -->
             <script type="text/javascript" src="../js/L.Map.Sync.js"></script>
             <script type="text/javascript" src="../data/test/traffic_2017-12-16.js"></script>
             <script type="text/javascript" src="../data/test/traffic_2017-12-23.js"></script>
             <script type="text/javascript" src="../js/trafficMap.js"></script>
 
+            <!-- Legende -->
             <div id="sidebar">
-                <!-- <input id="toggle-event" type="checkbox" checked data-toggle="toggle" data-on="Light<br>on"
-                       data-off="Light<br>off" data-onstyle="success">
-                <div id="console-event"></div>
-                <script>
-                    /*$(function () {
-                        $('#toggle-event').change(function () {
-                            $('#console-event').html('Toggle: ' + mapStyleId)
-                            if ($(this).prop('checked')) {
-                                mapStyleId = 'mapbox.emerald';
-                            } else {
-                                mapStyleId = 'mapbox.dark';
-                            }
-                            return mapStyleId;
-                        })
-                    })
-                })
-                $(function () {
-                    $('#toggle-event').change(function () {
-                        trafficLayerBonn.redraw();
-                        compareLayerBonn.redraw();
-                    })
-                })*/
-            </script> -->
                 <div class="legend">
                     <legend>Verkehrsstatus:</legend>
-
                     <table id="traffic_legend">
                         <tr>
                             <td height="50"><img src="../img/legend_green.png" width="25" height="25"></td>
                             <td height="50"> normales Verkehrsaufkommen</td>
                         </tr>
-
                         <tr>
                             <td height="50"><img src="../img/legend_yellow.png" width="25" height="25"></td>
-                            <td height="50">erhöhtes Verkehrsaufkommen</td>
+                            <td height="50">erhöhte Verkehrsbelastung</td>
                         </tr>
-
                         <tr>
                             <td height="50"><img src="../img/legend_orange.png" width="25" height="25"></td>
                             <td height="50">Staugefahr</td>
                         </tr>
-
                         <tr>
                             <td height="50"><img src="../img/legend_red.png" width="25" height="25"></td>
                             <td height="50">Stau</td>
                         </tr>
-
                         <tr>
                             <td height="50"><img src="../img/legend_blue.png" width="25" height="25"></td>
                             <td height="50">nicht ermittelbar</td>
@@ -162,19 +134,20 @@
 
         <!-- chart -->
         <div id="overview_container">
-            <br>
-            <br>
             <h1 id="uebersicht">Tagesübersicht</h1>
-            <div id="dayOverview"></div>
             <div class="text">
+<<<<<<< HEAD
                 <p>Die folgenden beiden Stacked Area Charts stellen jeweils die Häufgkeiten der gemessenen Verkerhslagen dar.
                     Besonders auffällig ist die Verkehrslage am 16.12.2017. Hier ist zu sehen, dass der Verkehrsstatus "erhöhte Verkehrsbelastung"
                 deutlich zunimmt.</p>
+=======
+                <p>Diese Diagramme zeigen den Verlauf der Verkehrslage über die jeweiligen Samstage.</p>
+>>>>>>> 09bf54e27e73bd9aeb4df1498f4a7c6be74c9061
             </div>
-            <div id="tableauViz"></div>
+            <div id="overview_16"></div>
             <script>
-                var placeholderDiv = document.getElementById("tableauViz");
-                var url = "https://public.tableau.com/views/Tagesablauf/Blatt1?:embed=y&:display_count=yes";
+                var placeholderDiv = document.getElementById("overview_16");
+                var url = "https://public.tableau.com/views/Tagesablauf16/Blatt1?:embed=y&:display_count=yes";
                 var options = {
                     hideTabs: true,
                     onFirstInteractive: function () {
@@ -183,18 +156,33 @@
                 };
                 var viz = new tableau.Viz(placeholderDiv, url, options);
             </script>
-            <!-- Einbinden Javascript -->
-            <script type="text/javascript" src="../js/dayOverview.js"></script>
+            <div id="overview_23"></div>
+            <script>
+                var placeholderDiv = document.getElementById("overview_23");
+                var url = "https://public.tableau.com/views/Tagesablauf/23_12_2017?:embed=y&:display_count=yes";
+                var options = {
+                    hideTabs: true,
+                    onFirstInteractive: function () {
+                        // The viz is now ready and can be safely used.
+                    }
+                };
+                var viz = new tableau.Viz(placeholderDiv, url, options);
+            </script>
         </div>
+        <hr id="vis_hr">
 
+        <br>
         <!-- poi map -->
         <div id="poi_container">
             <br>
-            <h1 id="ansaetze">Ansätze</h1>
+            <h1 id="loesungen">Lösungen</h1>
             <h2 id="elektro">Elektrotankstellen, Park&Ride, Carsharing</h2>
             <div class="text">
-                <p>Auf dieser Karte werden die Standorte der Elektrotankstellen, P+R-Stellen und Carsharing-Stationen
-                    gezeigt.</p>
+                <p> Wie schafft es Bonn, seinen Verkehr sogar Samstags niedrig zu halten? </br>
+                    Bonn bietet für seine Einwohner viele Optionen "grüner" und smarter zu leben, darunter
+                    Elektrotankstellen,
+                    Park and Ride und Carsharing. In der folgenden Karte sind die wichtigsten Punkte dieser Angebote
+                    verzeichnet.</p>
             </div>
             <div id="map_poi_id"></div>
             <!-- Einbinden GeoJSONs -->
@@ -202,19 +190,19 @@
             <script type="text/javascript" src="../data/poi/Carsharing.js"></script>
             <script type="text/javascript" src="../data/poi/ParkAndRide.js"></script>
             <script type="text/javascript" src="../js/poiMap.js"></script>
+
+            <!-- Legende -->
             <div class="legend">
                 <table id="sideInfo_legend">
                     <tr id="sideInfo_legend_row">
                         <td class="sideInfo_legend_icon" height="50"><img src="../img/Cambio.png" width="25"
                                                                           height="25"></td>
                         <td class="sideInfo_legend_text" height="50"> Cambio CarSharing Station</td>
-
-                        <td class="sideInfo_legend_icon" height="50"><img src="../img/Stromtankstelle.jpg"
-                                                                          width="25" height="25"></td>
-                        <td class="sideInfo_legend_text" height="50"> Stromtankstelle</td>
-
-                        <td class="sideInfo_legend_icon" height="50"><img src="../img/P+R.jpg" width="25"
+                        <td class="sideInfo_legend_icon" height="50"><img src="../img/Stromtankstelle.jpg" width="25"
                                                                           height="25"></td>
+                        <td class="sideInfo_legend_text" height="50"> Stromtankstelle</td>
+                        <td class="sideInfo_legend_icon" height="50"><img src="../img/P+R.jpg" width="25" height="25">
+                        </td>
                         <td class="sideInfo_legend_text" height="50"> Park+Ride</td>
                     </tr>
                 </table>
@@ -225,6 +213,7 @@
             <div class="text">
                 <br>
                 <h2>Hypothesen</h2>
+                <p>Zu Beginn des Projekts haben wir folgende Hypothesen aufgestellt:</p>
                 <ol>
                     <li>Das Verkehrsaufkommen ist am 23.12.2017 viel höher als am 16.12.2017.</li>
                     <li>Die meisten Cambio-Carsharing-Stationen und Elektrotankstellen befinden sich in der
@@ -247,10 +236,12 @@
             </div>
         </div>
 
-        <div id="footer">
+
+        <hr id="footer_hr">
+        <footer>
             <p id="footerText">GDV WS2017/18 bei Prof. Dr. Till Nagel<br>
                 Präsentiert von den <b>Rittern der Lamarunde</b> - Hanna, Regina, Luca, Stefanie</p>
-        </div>
+        </footer>
     </div>
 </div>
 

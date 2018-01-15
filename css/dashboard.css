@@ -161,7 +161,7 @@ td {
 .slide_container {
     width: 86%; /* Width of the outside container */
     padding: 10px;
-    margin-top: 150px;
+    margin-top: 10px;
 }
 
 /* The slider itself */
@@ -197,15 +197,46 @@ td {
     cursor: pointer; /* Cursor on hover */
 }
 
+/* Tableau Vis */
+div#overview_16 {
+    height: 620px;
+    width: 42%;
+    float: left;
+    padding: 10px;
+}
 
-/* Footer */
-div#footer {
-    margin-top: 50px;
+div#overview_23 {
+    height: 600px;
+    width: 49%;
+    float: left;
+    margin-right: 20px;
+}
+
+hr#vis_hr{ /* Put text below vis */
+    width: 60%;
+    height: 1px;
+    margin-top: 5px;
 }
 
 
-/* Formatting Text */
+/* Footer */
+hr#footer_hr {
+    width: 60%;
+    height: 1px;
+    margin-top: 5px;
+    background-color: #ffffff;
+}
+
+footer {
+    background-color: #A4A3B0;
+    color: #ffffff;
+    text-align: center;
+}
+
+
+/* Formatting Site */
 h1, h2, span, p, td, legend, a, ul {
+    font-family: "Palatino";
     color: #000000;
 }
 
@@ -218,6 +249,7 @@ h1, h2, span, p, td, legend, a, ul {
 }
 
 .text {
+    font-family: "Palatino";
     font-size: 20px;
     text-align: justify;
 }
