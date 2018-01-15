@@ -32,11 +32,6 @@
     <!-- Besondere Stile für diese Vorlage -->
     <link href="../css/dashboard.css" rel="stylesheet">
 
-    <!-- Unterstützung für Media Queries und HTML5-Elemente in IE8 über HTML5 shim und Respond.js -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
     <script src="https://public.tableau.com/javascripts/api/tableau-2.1.1.min.js"></script>
@@ -56,21 +51,28 @@
             <li class="active"><a href="#traffic_container">Verkehrslage <span class="sr-only">(aktuell)</span></a></li>
             <li><a href="#overview_container">Tagesübersicht</a></li>
             <li><a href="#poi_container">Ansätze</a></li>
+            <li><a href="#hyp_container">Hypothesen</a></li>
         </ul>
     </div>
 
     <!-- page content -->
     <div class="col-sm-9 col-sm-offset-3 col-md-11 col-md-offset-1 main">
         <hr/>
-        <h1 class="page-header"><span style="color: #1C9D43">Tra</span>ffic <span style="color: #F77942">Vis</span>ualization
-            <span style="color: #B9303E">Bonn</span></h1>
+        <h1 class="page-header"><span style="color: #B9303E">Tra</span>ffic <span style="color: #F77942">Vis</span>ualization
+            <span style="color: #1C9D43">Bonn</span></h1>
 
         <div class="text">
-            <p>Auf dieser Seite zeigen wir unsere Ergebnisse des Semesterprojektes aus der Vorlesung "Grundlagen der Datenvisualisierung".
-            Zu aller erst kommt eine Visualisierung der Verkehrslage. Diese wird als Karte dargestellt. Mit dem Slider unterhalb der Karte
-            kann die Zeit ausgewählt werden. Es werden insgesamt zwei Tage dargstellt.
-            Das Stacked Area Chart stellt ebenfalls die Verkehrslage dar.
-            Zum Schluss folgt eine Karte auf der die Elektrotankstellen, Carsharing-Stationen und P+R-Standorte abgebildet sind.
+            <p>Auf dieser Seite zeigen wir unsere Ergebnisse des Semesterprojektes aus der Vorlesung "Grundlagen der
+                Datenvisualisierung" oder kurz GDV.
+                Zu sehen ist die Visualisierung der Verkehrslage vom 16.12.2017 (links) im vergleich mit der Verkehrslage vom
+                Vorweihnachtstag eine Woche später (rechts), welche als Karten dargestellt werden. Mit dem
+                Slider unterhalb der Karten
+                kann die Zeit ausgewählt werden, zu der die Verkehrslagen visualisiert werden sollen.
+                Das Stacked Area Chart bildet ebenfalls die Verkehrslage ab und ermöglicht einen weiteren Blickwinkel auf die Thematik.
+                Weiterhin folgt eine Karte, auf der die Elektrotankstellen, Carsharing-Stationen und P+R-Standorte
+                abgebildet sind.
+                Mit allen Karten kann wie gewohnt interagiert werden.
+                Abschließend beantworten wir einige Hypothesen, die wir zu Beginn des Projekts aufgestellt haben.
             </p>
         </div>
 
@@ -80,7 +82,8 @@
             <h2>Samstag, 16.12.2017 vs. Samstag, 23.12.2017</h2>
             <div class="text">
                 <p>Die folgende Visualisierung soll einen Vergleich zweier Samstage darstellen.
-                    Die linke Visualisierung zeigt den 16.12.2017 und die rechte Visualisierung zeigt den 23.12.2017.</p>
+                    Die linke Visualisierung zeigt den 16.12.2017 und die rechte Visualisierung zeigt den
+                    23.12.2017.</p>
             </div>
             <div id="map_traffic_id"></div>
             <div id="map_compare_id"></div>
@@ -90,29 +93,29 @@
             <script type="text/javascript" src="../js/trafficMap.js"></script>
 
             <div id="sidebar">
-                    <!-- <input id="toggle-event" type="checkbox" checked data-toggle="toggle" data-on="Light<br>on"
-                           data-off="Light<br>off" data-onstyle="success">
-                    <div id="console-event"></div>
-                    <script>
-                        /*$(function () {
-                            $('#toggle-event').change(function () {
-                                $('#console-event').html('Toggle: ' + mapStyleId)
-                                if ($(this).prop('checked')) {
-                                    mapStyleId = 'mapbox.emerald';
-                                } else {
-                                    mapStyleId = 'mapbox.dark';
-                                }
-                                return mapStyleId;
-                            })
+                <!-- <input id="toggle-event" type="checkbox" checked data-toggle="toggle" data-on="Light<br>on"
+                       data-off="Light<br>off" data-onstyle="success">
+                <div id="console-event"></div>
+                <script>
+                    /*$(function () {
+                        $('#toggle-event').change(function () {
+                            $('#console-event').html('Toggle: ' + mapStyleId)
+                            if ($(this).prop('checked')) {
+                                mapStyleId = 'mapbox.emerald';
+                            } else {
+                                mapStyleId = 'mapbox.dark';
+                            }
+                            return mapStyleId;
                         })
                     })
-                    $(function () {
-                        $('#toggle-event').change(function () {
-                            trafficLayerBonn.redraw();
-                            compareLayerBonn.redraw();
-                        })
-                    })*/
-                </script> -->
+                })
+                $(function () {
+                    $('#toggle-event').change(function () {
+                        trafficLayerBonn.redraw();
+                        compareLayerBonn.redraw();
+                    })
+                })*/
+            </script> -->
                 <div class="legend">
                     <legend>Legende:</legend>
 
@@ -161,15 +164,15 @@
             </div>
             <div id="tableauViz"></div>
             <script>
-            var placeholderDiv = document.getElementById("tableauViz");
-            var url = "https://public.tableau.com/shared/77QWH29GS?:display_count=yes";
-            var options = {
-            hideTabs: true,
-            onFirstInteractive: function() {
-            // The viz is now ready and can be safely used.
-            }
-            };
-            var viz = new tableau.Viz(placeholderDiv, url, options);
+                var placeholderDiv = document.getElementById("tableauViz");
+                var url = "https://public.tableau.com/shared/77QWH29GS?:display_count=yes";
+                var options = {
+                    hideTabs: true,
+                    onFirstInteractive: function () {
+                        // The viz is now ready and can be safely used.
+                    }
+                };
+                var viz = new tableau.Viz(placeholderDiv, url, options);
             </script>
             <!-- Einbinden Javascript -->
             <script type="text/javascript" src="../js/dayOverview.js"></script>
@@ -180,7 +183,8 @@
             <h1 id="ansaetze">Ansätze</h1>
             <h2 id="elektro">Elektrotankstellen, Park&Ride, Carsharing</h2>
             <div class="text">
-                <p>Auf dieser Karte werden die Standorte der Elektrotankstellen, P+R und Carsharing-Stationen gezeigt.</p>
+                <p>Auf dieser Karte werden die Standorte der Elektrotankstellen, P+R und Carsharing-Stationen
+                    gezeigt.</p>
             </div>
             <div id="map_poi_id"></div>
             <!-- Einbinden GeoJSONs -->
@@ -207,17 +211,28 @@
             </div>
         </div>
 
-        <div id="footer">
+        <div id="hyp_container">
+            <h1>Fragestellung und Hypothesen</h1>
             <div class="text">
-                <br>
-                <p>Beantwortung der Hypothesen:<br>
-                <ul>
-                <li>Cambio-Carsharing-Stationen liegen hauptsächlich in Bonn-Zentrum und näherer Umgebung.</li>
-                <li>Elektrotankstellen ausgeglichene Verteilung – keine besonderen Auffälligkeiten.</li>
-                <li>Die meisten Bahnhöfe der P+R-Standorte befinden sich außerhalb der Innenstadt.</li>
-
-            </ul></p>
+                <h2>Hypothesen</h2>
+                <ol>
+                    <li>Hypothese 1</li>
+                    <li>Hypothese 2</li>
+                    <li>Hypothese 3</li>
+                </ol>
             </div>
+            <div class="text">
+                <h2>Beantwortung der Hypothesen:</h2>
+                <ol>
+                    <li>Cambio-Carsharing-Stationen liegen hauptsächlich in Bonn-Zentrum und näherer Umgebung.</li>
+                    <li>Elektrotankstellen ausgeglichene Verteilung – keine besonderen Auffälligkeiten.</li>
+                    <li>Die meisten Bahnhöfe der P+R-Standorte befinden sich außerhalb der Innenstadt.</li>
+                </ol>
+
+            </div>
+        </div>
+
+        <div id="footer">
             <p id="footerText">GDV WS2017/18 bei Prof. Dr. Till Nagel<br>
                 Präsentiert von den <b>Rittern der Lamarunde</b> - Hanna, Regina, Luca, Stefanie</p>
         </div>

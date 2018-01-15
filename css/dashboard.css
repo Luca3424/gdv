@@ -82,14 +82,14 @@ div#traffic_container {
   height: 600px;
   margin: auto;
   padding: 10px;
-  margin-bottom: 100px;
+  margin-bottom: 210px;
 }
 
 div#poi_container {
   height: 600px;
   padding-top: 10px;
   margin-top: 2%;
-  margin-bottom: 100px;
+  margin-bottom: 150px;
 }
 
 div#overview_container {
@@ -164,7 +164,7 @@ td {
     -webkit-appearance: none;  /* Override default CSS styles */
     width: 100%; /* Full-width */
     height: 25px;
-    background: #3c763d;
+    background: #A4A3B0;
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
@@ -195,7 +195,7 @@ td {
 
 /* Footer */
 div#footer {
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
 
@@ -205,15 +205,16 @@ h1, h2, span, p, td, legend, a, ul {
 }
 
 .navbar{
-    background-color: #3c763d;
+    background-color: #262629;
 }
 
 .navbar-brand{
-    color: #000000;
+    color: #C6C4D4;
 }
 
 .text {
     font-size: 20px;
+    text-align: justify;
 }
 
 
