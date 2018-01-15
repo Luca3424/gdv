@@ -1,5 +1,5 @@
 //change to 'mapbox.dark', 'mapbox.light', 'mapbox.emerald', or 'mapbox.high-contrast'
-var mapStyleId = 'mapbox.dark';
+var mapStyleId = 'mapbox.light';
 
 //restricts map area
 var bounds = [

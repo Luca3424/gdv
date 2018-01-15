@@ -1,6 +1,6 @@
 
 body {
-    background: #000000;
+    background: #ffffff;
 }
 
 /*
@@ -42,7 +42,7 @@ body {
 
 /* Sidebar navigation */
 .nav-sidebar {
-  background-color: #000000;
+  background-color: #ffffff;
   margin-right: -21px; /* 20px padding + 1px border */
   margin-bottom: 20px;
   margin-left: -20px;
@@ -201,7 +201,7 @@ div#footer {
 
 /* Formatting Text */
 h1, h2, span, p, td, legend, a, ul {
-    color: #BDBDBD;
+    color: #000000;
 }
 
 .navbar{
