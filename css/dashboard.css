@@ -53,13 +53,13 @@ body {
 }
 
 .nav-sidebar > li > a:hover{
-    background-color: #3c763d;
+    background-color: #1C9D43;
     color: #000000;
 }
 
 .nav-sidebar > a:focus {
     color: #000000;
-    background-color: #3c763d;
+    background-color: #1C9D43;
 }
 
 .nav-sidebar > .active > a,
@@ -82,7 +82,7 @@ div#traffic_container {
   height: 600px;
   margin: auto;
   padding: 10px;
-  margin-bottom: 210px;
+  margin-bottom: 220px;
 }
 
 div#poi_container {
