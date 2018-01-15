@@ -3,10 +3,6 @@
 <head>
     <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.png">
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <!-- D3 JS -->
     <title>TraVis Bonn</title>
@@ -25,15 +21,14 @@
     <!-- MainJS -->
     <script type="text/javascript" src="../js/mainJS.js"></script>
 
+    <!-- Tableau JS -->
+    <script src="https://public.tableau.com/javascripts/api/tableau-2.1.1.min.js"></script>
+
     <!-- Bootstrap-CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Besondere Stile für diese Vorlage -->
     <link href="../css/dashboard.css" rel="stylesheet">
-
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
-    <script src="https://public.tableau.com/javascripts/api/tableau-2.1.1.min.js"></script>
 </head>
 
 <body onload="init()">
@@ -90,10 +85,11 @@
             <h3 id="compare_headline">Samstag, 16.12.2017 vs. Samstag, 23.12.2017</h3>
             <div id="map_traffic_id"></div>
             <div id="map_compare_id"></div>
-            <!-- Einbinden GeoJSONs -->
+
+            <!-- embed Javascript -->
             <script type="text/javascript" src="../js/L.Map.Sync.js"></script>
-            <script type="text/javascript" src="../data/test/traffic_2017-12-16.js"></script>
-            <script type="text/javascript" src="../data/test/traffic_2017-12-23.js"></script>
+            <script type="text/javascript" src="../data/traffic/2017-12-16.js"></script>
+            <script type="text/javascript" src="../data/traffic/2017-12-23.js"></script>
             <script type="text/javascript" src="../js/trafficMap.js"></script>
 
             <!-- Legende -->
@@ -128,7 +124,7 @@
 
         <!-- slider -->
         <div class="slide_container">
-            <input type="range" min="0" max="23" value="12" class="slider" id="time_slider" oninput="changeValue()">
+            <input type="range" min="0" max="23" value="12" class="slider" id="time_slider" oninput="setData()">
             <span>Uhrzeit:</span> <span id="timestamp"></span> <span>: 00 Uhr</span>
         </div>
 
@@ -141,53 +137,31 @@
                 deutlich zunimmt.</p>
             </div>
             <div id="overview_16"></div>
-            <script>
-                var placeholderDiv = document.getElementById("overview_16");
-                var url = "https://public.tableau.com/views/Tagesablauf16/Blatt1?:embed=y&:display_count=yes";
-                var options = {
-                    hideTabs: true,
-                    onFirstInteractive: function () {
-                        // The viz is now ready and can be safely used.
-                    }
-                };
-                var viz = new tableau.Viz(placeholderDiv, url, options);
-            </script>
             <div id="overview_23"></div>
-            <script>
-                var placeholderDiv = document.getElementById("overview_23");
-                var url = "https://public.tableau.com/views/Tagesablauf/23_12_2017?:embed=y&:display_count=yes";
-                var options = {
-                    hideTabs: true,
-                    onFirstInteractive: function () {
-                        // The viz is now ready and can be safely used.
-                    }
-                };
-                var viz = new tableau.Viz(placeholderDiv, url, options);
-            </script>
         </div>
+
         <hr id="vis_hr">
 
-        <br>
-        <!-- poi map -->
+        <!-- points of interest (poi) map -->
         <div id="poi_container">
             <br>
             <h1 id="loesungen">Lösungen</h1>
             <h2 id="elektro">Elektrotankstellen, Park&Ride, Carsharing</h2>
             <div class="text">
-                <p> Wie schafft es Bonn, seinen Verkehr sogar Samstags niedrig zu halten? </br>
+                <p> Wie schafft es Bonn, seinen Verkehr sogar Samstags niedrig zu halten? <br>
                     Bonn bietet für seine Einwohner viele Optionen "grüner" und smarter zu leben, darunter
                     Elektrotankstellen,
                     Park and Ride und Carsharing. In der folgenden Karte sind die wichtigsten Punkte dieser Angebote
                     verzeichnet.</p>
             </div>
             <div id="map_poi_id"></div>
-            <!-- Einbinden GeoJSONs -->
+            <!-- embed javsscript -->
             <script type="text/javascript" src="../data/poi/Elektrotankstellen.js"></script>
             <script type="text/javascript" src="../data/poi/Carsharing.js"></script>
             <script type="text/javascript" src="../data/poi/ParkAndRide.js"></script>
             <script type="text/javascript" src="../js/poiMap.js"></script>
 
-            <!-- Legende -->
+            <!-- Legend -->
             <div class="legend">
                 <table id="sideInfo_legend">
                     <tr id="sideInfo_legend_row">
@@ -205,6 +179,8 @@
             </div>
         </div>
 
+
+        <!-- hypotheses -->
         <div id="hyp_container">
             <div class="text">
                 <br>
@@ -244,8 +220,6 @@
 <!-- Bootstrap-JavaScript
 ================================================== -->
 <!-- Am Ende des Dokuments platziert, damit Seiten schneller laden -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
