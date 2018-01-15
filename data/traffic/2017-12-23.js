@@ -34125,3 +34125,9 @@ var data_23_23 = {
         }
     }]
 };
+
+//array with all geojsons of Dec 23
+var data_23 = [data_23_00, data_23_01, data_23_02, data_23_03, data_23_04, data_23_05, data_23_06, data_23_07, data_23_08, data_23_09,
+    data_23_10, data_23_11, data_23_12, data_23_13, data_23_14, data_23_15, data_23_16, data_23_17, data_23_18, data_23_19,
+    data_23_20, data_23_21, data_23_22, data_23_23];
+
