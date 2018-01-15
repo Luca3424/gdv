@@ -47,9 +47,9 @@ var icon_PAR = L.icon({
 
 //*** CAR CHARGING POINTS (CCP)***
 function onEachCCPFeature(feature) {
-    //fügt Marker zu Karte hinzu
+    //adds marker to map
     var markerCCP = L.marker(feature.geometry.coordinates, {icon: icon_CCP}).addTo(mapBonn);
-    //Pop-Up zu Marker
+    //Pop-Up to Marker
     markerCCP.bindPopup("<b>" + feature.properties.Einrichtung
         + "</b> <br> <b>Adresse: </b>" + feature.properties.Strasse
         + "</b> <br> <b>Leistung: </b> max. " + feature.properties.Leistung + "kW"
@@ -63,9 +63,9 @@ L.geoJSON(ElektrotankstellenStandorte, {
 
 // *** CARSHARING (CS)***
 function onEachCSFeature(feature) {
-    //fügt Marker zu Karte hinzu
+    //adds marker to map
     var markerCS = L.marker(feature.geometry.coordinates, {icon: icon_CS}).addTo(mapBonn);
-    //Pop-Up zu Marker
+    //Pop-Up to Marker
     markerCS.bindPopup("<b> Station: " + feature.name
         + " </b> <br> <b>Adresse: </b>" + feature.address.streetAddress + " " + feature.address.streetNumber
         + "<br> <b>Informationen: </b>" + feature.information.location);
@@ -78,9 +78,9 @@ L.geoJSON(CarsharingStandorte, {
 
 //*** PARK AND RIDE (PAR)***
 function onEachPARFeature(feature) {
-    //fügt Marker zu Karte hinzu
+    //adds marker to map
     var markerPAR = L.marker(feature.geometry.coordinates, {icon: icon_PAR}).addTo(mapBonn);
-    //Pop-Up zu Marker
+    //Pop-Up to Marker
     markerPAR.bindPopup("<b> Haltestelle: " + feature.properties.name + " </b> <br> Adresse: " + feature.properties.adresse);
 }
 

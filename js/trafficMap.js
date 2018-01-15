@@ -13,7 +13,7 @@ var trafficMapBonn = L.map('map_traffic_id', {
     maxBounds: bounds
 }).setView([50.735, 7.10], 13);
 
-//add credits to map
+//add token and mapstyle
 trafficLayerBonn = new L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
     maxZoom: 18,
     id: mapStyleId
@@ -37,11 +37,11 @@ function loadData_16(data) {
                     case 'Stau':
                         farbe = '#B9303E';
                         break;
-                    /*case 'aktuell nicht ermittelbar':
-                        farbe = '#000000';
-                        break;*/
+                    case 'aktuell nicht ermittelbar':
+                        farbe = '#4173E5';
+                        break;
                     default:
-                        farbe = '#4173E5'
+                        farbe = '#000000';
                 }
                 return {color: farbe};
             }
@@ -84,8 +84,11 @@ function loadData_23(data) {
                     case 'Stau':
                         farbe = '#B9303E';
                         break;
-                    default:
+                    case 'aktuell nicht ermittelbar':
                         farbe = '#4173E5';
+                        break;
+                    default:
+                        farbe = '#000000';
                 }
                 return {color: farbe};
             }
@@ -100,8 +103,9 @@ compareMapBonn.sync(trafficMapBonn);
 // *** FUNCTIONS ***
 
 //calls loadData functions according to time on timeslider
-function changeData() {
+function setData() {
     var data_timestamp = document.getElementById("time_slider").value;
+    changeValue();
     switch (data_timestamp) {
         case '0':
             loadData_16(data_16_00);
@@ -202,13 +206,7 @@ function changeData() {
     }
 }
 
-//changes "Uhrzeit" text element when slider is moved
+//changes "timestamp" text element when slider is moved
 function changeValue() {
     document.getElementById("timestamp").innerHTML = document.getElementById("time_slider").value;
-    changeData();
-}
-
-function init() {
-    changeData(); //load maps
-    changeValue(); //display slider value
 }
