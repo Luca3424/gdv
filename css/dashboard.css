@@ -1,6 +1,7 @@
 
 body {
     background: #ffffff;
+    font-family: Palatino;
 }
 
 /*
@@ -97,7 +98,7 @@ div#overview_container {
 }
 
 h3#compare_headline {
-    margin-left: 23%;
+    margin-left: 25%;
 }
 
 /* Maps */
