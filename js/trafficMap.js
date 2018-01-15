@@ -29,13 +29,13 @@ function loadData_16(data) {
                         farbe = '#1C9D43';
                         break;
                     case 'erhoehte Verkehrsbelastung':
-                        farbe = '#E8C358'
+                        farbe = '#E8C358';
                         break;
                     case 'Staugefahr':
-                        farbe = '#F77942'
+                        farbe = '#F77942';
                         break;
                     case 'Stau':
-                        farbe = '#B9303E'
+                        farbe = '#B9303E';
                         break;
                     /*case 'aktuell nicht ermittelbar':
                         farbe = '#000000';
@@ -76,16 +76,16 @@ function loadData_23(data) {
                         farbe = '#1C9D43';
                         break;
                     case 'erhoehte Verkehrsbelastung':
-                        farbe = '#E8C358'
+                        farbe = '#E8C358';
                         break;
                     case 'Staugefahr':
-                        farbe = '#F77942'
+                        farbe = '#F77942';
                         break;
                     case 'Stau':
-                        farbe = '#B9303E'
+                        farbe = '#B9303E';
                         break;
                     default:
-                        farbe = '#4173E5'
+                        farbe = '#4173E5';
                 }
                 return {color: farbe};
             }
