@@ -40,7 +40,7 @@
 <body onload="init()">
 
 <!-- header -->
-<div class="navbar">
+<div class="navbar navbar-fixed-top">
     <span class="navbar-brand" href="#">TraVis Bonn</span>
 </div>
 
@@ -58,6 +58,7 @@
     <!-- page content -->
     <div class="col-sm-9 col-sm-offset-3 col-md-11 col-md-offset-1 main">
         <hr/>
+    <br>
         <h1 class="page-header"><span style="color: #B9303E">Tra</span>ffic <span style="color: #F77942">Vis</span>ualization
             <span style="color: #1C9D43">Bonn</span></h1>
 
@@ -79,12 +80,12 @@
 
         <div id="traffic_container">
             <h1 id="verkehr"> Verkehrslage </h1>
-            <h2>Samstag, 16.12.2017 vs. Samstag, 23.12.2017</h2>
             <div class="text">
                 <p>Die folgende Visualisierung soll einen Vergleich zweier Samstage darstellen.
                     Die linke Visualisierung zeigt den 16.12.2017 und die rechte Visualisierung zeigt den
                     23.12.2017.</p>
             </div>
+            <h3 id="compare_headline">Samstag, 16.12.2017 vs. Samstag, 23.12.2017</h3>
             <div id="map_traffic_id"></div>
             <div id="map_compare_id"></div>
             <script type="text/javascript" src="../js/L.Map.Sync.js"></script>
@@ -212,7 +213,6 @@
         </div>
 
         <div id="hyp_container">
-            <h1>Fragestellung und Hypothesen</h1>
             <div class="text">
                 <h2>Hypothesen</h2>
                 <ol>
@@ -222,7 +222,7 @@
                 </ol>
             </div>
             <div class="text">
-                <h2>Beantwortung der Hypothesen:</h2>
+                <h2>Beantwortungen der Hypothesen</h2>
                 <ol>
                     <li>Cambio-Carsharing-Stationen liegen hauptsächlich in Bonn-Zentrum und näherer Umgebung.</li>
                     <li>Elektrotankstellen ausgeglichene Verteilung – keine besonderen Auffälligkeiten.</li>

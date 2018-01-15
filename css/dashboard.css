@@ -96,6 +96,10 @@ div#overview_container {
     margin-top: 2%;
 }
 
+h3#compare_headline {
+    margin-left: 23%;
+}
+
 /* Maps */
 div#map_compare_id {
     height: 600px;
