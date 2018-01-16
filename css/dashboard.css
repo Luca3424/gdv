@@ -251,4 +251,11 @@ h1, h2, span, p, td, legend, a, ul {
     text-align: justify;
 }
 
+.text_slider {
+    font-family: "Palatino";
+    font-weight: bold;
+    font-size: 20px;
+    text-align: justify;
+}
+
 
