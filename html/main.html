@@ -27,7 +27,6 @@
     <!-- Bootstrap-CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/dashboard.css" rel="stylesheet">
-    <!-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"> -->
 
 </head>
 
@@ -57,19 +56,31 @@
             <span style="color: #1C9D43">Bonn</span></h1>
 
         <div class="text">
-            <p>Auf dieser Seite zeigen wir unsere Ergebnisse des Semesterprojektes aus der Vorlesung "Grundlagen der
-                Datenvisualisierung" oder kurz GDV.
-                Zu sehen ist die Visualisierung der Verkehrslage vom 16.12.2017 (links) im vergleich mit der
-                Verkehrslage vom
-                Vorweihnachtstag eine Woche später (rechts), welche als Karten dargestellt werden. Mit dem
-                Slider unterhalb der Karten
-                kann die Zeit ausgewählt werden, zu der die Verkehrslagen visualisiert werden sollen.
-                Das Stacked Area Chart bildet ebenfalls die Verkehrslage ab und ermöglicht einen weiteren Blickwinkel
-                auf die Thematik.
-                Weiterhin folgt eine Karte, auf der die Elektrotankstellen, Carsharing-Stationen und P+R-Standorte
-                abgebildet sind.
-                Mit allen Karten kann wie gewohnt interagiert werden.
+            <p>Auf dieser Seite stellen wir unsere Ergebnisse des Semesterprojektes aus der Vorlesung Grundlagen der
+                Datenvisualisierung vor.
+                <br>
+                Die Aufgabe war die Visualisierung eines urbanen Raums in der EU mit mehr als 100.000 Einwohnern.
+                Aufgrund der vielen vorhandenen
+                Datensätze zum Thema Verkehr haben wir uns für Bonn entschieden. Im Folgenden wollen wir die
+                Verkehrslage in Bonn darstellen und zeigen, was Bonn seinen Einwohnern an Alternativen zum Auto bietet.
+                Da es immer mehr Menschen und dadurch auch immer mehr Autos gibt, ist es im Interesse
+                von Städten, solche Alternativen anbieten zu können um den Verkehr und die
+                Schadstoffbelastung gering zu halten.
+                <br>
+                Zu sehen ist die Visualisierung der Verkehrslage vom 16.12.2017 (links) im Vergleich mit der
+                Verkehrslage vom Vorweihnachtstag eine Woche später (rechts), welche als Karten visualisiert wurden. Mit
+                dem Slider unterhalb der Karten
+                kann die Zeit ausgewählt werden, zu der die Verkehrslagen dargestellt werden sollen.
+                <br>
+                Das Stacked Area Chart darunter bildet ebenfalls die Verkehrslage ab, hier aber als Übersicht über den
+                jeweiligen Tag. Dies bietet eine weitere Grundlage zum Vergleich.
+                <br>
+                Als letzte Visualisierung folgt eine weitere Karte, auf der die Elektrotankstellen, Carsharing-Stationen
+                und Park&Ride-Standorte
+                abgebildet sind. Mit Klick auf den entsprechenden Standort werden weitere Informationen bereitgestellt.
+                <br>
                 Abschließend beantworten wir einige Hypothesen, die wir zu Beginn des Projekts aufgestellt haben.
+                Mit allen Karten auf dieser Seite kann wie gewohnt interagiert werden.
             </p>
         </div>
 
@@ -78,10 +89,7 @@
             <br>
             <h1 id="verkehr"> Verkehrslage </h1>
             <div class="text">
-                <p>Diese Visualisierung stellt einen Vergleich zweier Samstage dar.
-                    Die linke Karte zeigt den 16.12.2017 und die rechte Karte den vermeintlich hektischen
-                    23.12.2017, der letzte Tag in 2017, an dem man Besorgungen für den Weihnachtsabend erledigen
-                    konnte.</p>
+                <p>Diese Karten stellt die Verkehrslage beider Samstage dar. Die Uhrzeit kann per Slider geändert werden.</p>
             </div>
             <h3 id="compare_headline">Samstag, 16.12.2017 vs. Samstag, 23.12.2017</h3>
             <div id="map_traffic_id"></div>
@@ -93,7 +101,7 @@
             <script type="text/javascript" src="../data/traffic/2017-12-23.js"></script>
             <script type="text/javascript" src="../js/trafficMap.js"></script>
 
-            <!-- Legende -->
+            <!-- legend traffic -->
             <div id="sidebar">
                 <div class="legend">
                     <legend>Verkehrsstatus:</legend>
@@ -126,18 +134,26 @@
         <!-- slider -->
         <div class="slide_container">
             <input type="range" min="0" max="23" value="12" class="slider" id="time_slider" oninput="setData()">
-            <span>Uhrzeit: </span><span id="timestamp"></span> <span>: 00 Uhr</span>
+            <br>
+            <span class="text_slider">Uhrzeit: </span><span id="timestamp" class="text_slider">12</span> <span class="text_slider">: 00 Uhr</span>
         </div>
 
-        <!-- chart -->
+        <div>
+            <h3> Wie werden diese Daten erhoben? </h3>
+            <p class="text"> Die vorbeifahrenden Autos werden per Bluetooth Handshake erfasst. Bluetooth ist Teil sehr vieler Geräte:
+            Smartphones, Freisprechanlagen, Autoradios, Navigationssysteme, usw. Daher werden ca. 18% der Fahrzeuge erkannt. Da dieser Handshake
+            pro Straßenzug zweimal stattfindet, kann die Geschwindigkeit jedes vorbeifahrenden Autos germittelt werden. Die erhobenen Werte
+            werden dann hochgerechnet.</p>
+        </div>
+
+        <!-- charts -->
         <div id="overview_container">
             <br>
             <br>
             <h1 id="uebersicht">Tagesübersicht</h1>
             <div class="text">
-                <p>Die folgenden beiden Stacked Area Charts stellen jeweils die Häufgkeiten der gemessenen Verkerhslagen dar.
-                    Besonders auffällig ist die Verkehrslage am 16.12.2017. Hier ist zu sehen, dass der Verkehrsstatus "erhöhte Verkehrsbelastung"
-                deutlich zunimmt.</p>
+                <p>Die folgenden Stacked Area Charts stellen jeweils die Häufgkeiten der gemessenen Verkerhslagen
+                    dar. Insgesamt gab es 110 Streckenabschnitte. </p>
             </div>
             <div id="overview_16"></div>
             <div id="overview_23"></div>
@@ -153,7 +169,7 @@
             <div class="text">
                 <p> Wie schafft es Bonn, seinen Verkehr sogar Samstags niedrig zu halten? <br>
                     Bonn bietet seinen Einwohnern viele Optionen "grüner" und smarter zu leben, darunter
-                    Elektrotankstellen, Park and Ride und Carsharing.
+                    Elektrotankstellen, Park&Ride und Carsharing.
                     In der folgenden Karte sind die wichtigsten Punkte dieser Angebote
                     verzeichnet.</p>
             </div>
@@ -164,7 +180,7 @@
             <script type="text/javascript" src="../data/poi/ParkAndRide.js"></script>
             <script type="text/javascript" src="../js/poiMap.js"></script>
 
-            <!-- Legend -->
+            <!-- Legend poi -->
             <div class="legend">
                 <table id="sideInfo_legend">
                     <tr id="sideInfo_legend_row">
@@ -187,26 +203,39 @@
         <div id="hyp_container">
             <div class="text">
                 <br>
-                <h2>Hypothesen</h2>
+                <h1>Hypothesen</h1>
                 <p>Zu Beginn des Projekts haben wir folgende Hypothesen aufgestellt:</p>
                 <ol>
                     <li>Das Verkehrsaufkommen ist am 23.12.2017 viel höher als am 16.12.2017.</li>
+                    <li>Zur Rush Hour (7-9 Uhr und 15-18 Uhr) ist das Verkehrsaufkommen an beiden Tagen erhöht.</li>
                     <li>Die meisten Cambio-Carsharing-Stationen und Elektrotankstellen befinden sich in der
                         Innenstadt.
                     </li>
-                    <li>Die meisten Bahnhöfe der zugehörigen P+R-Standorte sind außerhalb der Innenstadt.</li>
+                    <li>Die meisten Bahnhöfe der zugehörigen Park&Ride-Standorte sind außerhalb der Innenstadt.</li>
                 </ol>
             </div>
             <div class="text">
-                <h2>Fazit zu den Hypothesen</h2>
-                <ol>
-                    <li>Anders als gedacht, war die Verkehrsbelastung am 16.12.2017 etwas höher als am Tag vor Weihnachten.</li>
-                    <li>Cambio-Carsharing-Stationen liegen hauptsächlich in der Innenstadt und näherer Umgebung.
-                        Die Elektrotankstellen haben eine ausgeglichene Verteilung. Hier gibt es keine besonderen
-                        Auffälligkeiten
-                    </li>
-                    <li>Die meisten Bahnhöfe der P+R-Standorte befinden sich außerhalb der Innenstadt.</li>
-                </ol>
+                <h3>Fazit</h3>
+                <p> Wir erwarteten aus drei Gründen ein höheres Verkehrsaufkommen am Samstag vor Weihnachten:
+                    <ul>
+                        <li> Einkaufen von Last-Minute Weihnachtsgeschenken</li>
+                        <li> Einkaufen von Lebensmitteln, da drei Feiertage folgten</li>
+                        <li> Personen, die in Urlaub oder zu Verwandten fahren</li>
+                    </ul>
+                Anders als gedacht war die Verkehrsbelastung am 16.12.2017 sogar etwas höher als am Tag vor
+                Weihnachten. Besonders in der Tagesübersicht sieht man, dass es am 16. mehr Straßenzüge mit erhöhter Verkehrsbelastung
+                und Staugefahr gab. Leider werden diese Ergebnisse dadurch verzerrt, dass die Verkehrslage am 23. Dezember
+                auf sehr viel mehr Straßenzügen nicht ermittelbar war.
+                <br>
+                In der Tagesübersicht erkennt man eine Rush Hour von ca. 12 bis 19 Uhr. Am 16. Dezember beginnt diese bereits um 10 Uhr,
+                am 23. Dezember endet sie erst um 20 Uhr. Eine weitere, jedoch leichtere Rush Hour ist morgens von 5 Uhr bis 7 Uhr,
+                diese beginnt ebenfalls früher am 16. und endet später am 23. Dezember. Aber auch hier wird das Ergebnis leider verzerrt, besonders
+                am Morgen des 23. Dezembers gibt es viele nicht ermittelbare Verkehrsdaten.
+                <br>
+                Wie auf der unteren Karte gut zu erkennen, sind die Carsharing Stationen hauptsächlich innerhalb
+                und die P+R Standorte vor allem außerhalb von Bonn. Nur die Elektrotankstellen sind entgegen unserer Hypothese
+                nicht vermehrt in der Innenstadt sondern ausgeglichen verteilt.
+                </p>
 
             </div>
         </div>
