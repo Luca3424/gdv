@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="/assets/xslt/atom.xslt" ?>
+<?xml-stylesheet type="text/css" href="/assets/css/atom.css" ?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<id>http://localhost:4000/</id>
+	<title>Smart Cities | Hochschule Mannheim</title>
+	<updated>2018-01-24T23:53:56+01:00</updated>
+
+	<subtitle>»GDV - Grundlagen der Informationsvisualisierung« ist ein Kurs an der Hochschule Mannheim unter der Leitung von Till Nagel.</subtitle>
+
+	
+		
+		<author>
+			
+				<name>Till Nagel</name>
+			
+			
+			
+				<uri>http://tillnagel.com/</uri>
+			
+		</author>
+	
+
+	<link href="http://localhost:4000/atom.xml" rel="self" type="application/rss+xml" />
+	<link href="http://localhost:4000/" rel="alternate" type="text/html" />
+
+	<generator uri="http://jekyllrb.com" version="3.0.2">Jekyll</generator>
+
+	
+		<entry>
+			<id>http://localhost:4000/projects/innsbruck_education/</id>
+			<title>InnsbruckEducation</title>
+			<link href="http://localhost:4000/projects/innsbruck_education/" rel="alternate" type="text/html" title="InnsbruckEducation" />
+			<updated>2018-01-23T00:00:00+01:00</updated>
+
+			
+				
+				<author>
+					
+						<name>Flaubert Bertoli, Felix Hefner, Max Jando &amp;amp; Severin Kohler</name>
+					
+					
+					
+				</author>
+			
+			<summary>Untersuchung der Korrelation zwischen der Bevölkerungsdichte und den Bildungseinrichtungen</summary>
+			<content type="html" xml:base="http://localhost:4000/projects/innsbruck_education/">&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
+
+&lt;p&gt;Innsbruck ist eine Stadt im Herzen Österreichs mit 130.000 Einwohnern. 
+Im Jahr 2017 waren hiervon ca. ein Drittel im Schüler- und Studentenalter.
+Wir haben uns in diesem Visualisierungsprojekt die Frage gestellt, 
+inwiefern das Schul- und Hochschul-Angebot innerhalb der einzelnen Gebiete 
+der Stadt mit der dort anwesenden potentiellen Schüler- und Studentenschaft in 
+Verbindung gebracht werden kann. Daraus entstanden ist eine Processing-Anwendung, 
+die neben einer Heatmap Innsbrucks ein Streudiagramm zeigt.&lt;/p&gt;
+
+&lt;h2 id=&quot;einfhrung--konzept&quot;&gt;Einführung / Konzept&lt;/h2&gt;
+
+&lt;h3 id=&quot;motivation&quot;&gt;Motivation&lt;/h3&gt;
+&lt;p&gt;Als Studenten wollten wir ein Thema finden, das uns direkt betrifft und interessiert. Wir stellten Nachforschungen an und fanden das OpenData Portal von Innsbruck, auf dem alle Stadtteile (Einwohner und Alter dieser) und Bildungseinrichtungen gelistet waren. Daraufhin wollten wir wissen, ob Stadtteile mit vielen Bildungseinrichtungen für junge Menschen attraktive Wohngegenden darstellen. Dies zu visuallisieren weckte unser Interesse.&lt;/p&gt;
+
+&lt;h3 id=&quot;das-konzept&quot;&gt;Das Konzept&lt;/h3&gt;
+&lt;p&gt;Die Grundidee war eine Karte von Innsbruck unterteilt in Stadtteilen die die jeweiligen Bildungseinrichtungen halten zu visualisieren. Anhand einer Einfärbung der Stadtteile je nach Bevölkerungsdichte von Einwohnern zwischen 6 und 29 Jahren (übliches Alter von Schülern und Studenten) sollte verdeutlicht werden wieviele Schüler und Studenten in den jeweiligen Stadtteilen leben. Um die Korrelation der Schüler und Studenten in den Stadteilen mit den Bildungseinrichtungen noch besser herauszuarbeiten (nicht nur auf der Stadtkarte) sollte ein Scatterplot der die Anzahl der Bildungseinrichtungen und Einwohnern (6-29 Jahre) der einzelnen Stadtteile vergleicht Dargestellt werden. Zusätzlich fügten wir dann noch einen Schieberegler von den Jahren 2013 bis 2017 hinzu um die Zu- und Abwanderungsrate von Schülern und Studenten in die einzelnen Bezirke zu visualisieren. Des Weiteren wurden noch 2 Knöpfe eingebaut die dazu dienen entweder nur Schulen oder höhere Bildungseinrichtungen anzuzeigen.&lt;/p&gt;
+
+&lt;h3 id=&quot;unsere-hypothesen&quot;&gt;Unsere Hypothesen&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Haupthypothese:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;“Korreliert die Anzahl der Bildungseinrichtungen in den Stadtteilen von Innsbruck mit der Anzahl der Schüler/Studenten in selbigen?”&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Nebenhypothese 1:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;“Korrelierte die Einwohnerdichte der Schüler/Studenten schon immer mit der Anzahl der Bildungseinrichtungen in Innsbruck oder hat sich dies erst über die Jahre dahingehend entwickelt?”&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Nebenhypothesen 2:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;“Gilt diese Korrelation nur für höhere Bildungseinrichtungen unabhängig von Schulen oder vice versa?”&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;daten&quot;&gt;Daten&lt;/h2&gt;
+
+&lt;h3 id=&quot;datenerhebung&quot;&gt;Datenerhebung&lt;/h3&gt;
+
+&lt;p&gt;Sämtliche Daten, die wir für die Visualisierung benutzt haben, stammen direkt aus dem &lt;a href=&quot;https://www.data.gv.at/auftritte/?organisation=stadt-innsbruck&amp;amp;nr=2&quot; target=&quot;_blank&quot;&gt;Datenauftritt der Stadt Innsbruck&lt;/a&gt;. 
+Dieser ist Teil des &lt;a href=&quot;https://www.data.gv.at/&quot; target=&quot;_blank&quot;&gt;Open Data Portals der Regierung Österreichs&lt;/a&gt;.
+Die Daten konnten dort direkt in geeigneten Formaten heruntergeladen werden. Ein Scrapper für eine API wurde hierfür nicht benötigt.
+Sämtliche geografische Kartendaten stammen aus dem &lt;a href=&quot;https://osm.org&quot; target=&quot;_blank&quot;&gt;Openstreetmap&lt;/a&gt;-Projekt.&lt;/p&gt;
+
+&lt;h3 id=&quot;formate&quot;&gt;Formate&lt;/h3&gt;
+
+&lt;p&gt;Unsere erhobenen Daten lagen in folgenden Formaten vor:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.csv&lt;/code&gt; für tabelarische Datensätze in strukturierter Form&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.geo.json&lt;/code&gt; für die geographischen Daten&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;datenaufbereitung&quot;&gt;Datenaufbereitung&lt;/h3&gt;
+
+&lt;p&gt;Um die Daten in unserer Anwendung sinnvoll nutzen zu können, mussten sie mit diversen Texteditoren und Tabellenkalkulationen und Bash-Scripten wie folgt bearbeitet werden:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Formatanpassungen der &lt;code class=&quot;highlighter-rouge&quot;&gt;.csv&lt;/code&gt;-Dateien&lt;/li&gt;
+  &lt;li&gt;Zusammenführen mehrerer Datensätze (Einwohner pro Jahr) zu einer Datei (Einwohner über mehrere Jahre)&lt;/li&gt;
+  &lt;li&gt;Kürzen von Header-Informationen&lt;/li&gt;
+  &lt;li&gt;Korrigieren von Umlauten&lt;/li&gt;
+  &lt;li&gt;Entfernen von unvollständigen Einträgen&lt;/li&gt;
+  &lt;li&gt;Mapping Zählersprengel (eine kleine Verwaltungseinheit für Bezirke in Österreich) zu Stadtteilen
+    &lt;ul&gt;
+      &lt;li&gt;Hier waren uns die Einwohnerzahlen pro Zählersprengel bekannt, jedoch nur die geographischen Ausprägungen auf Stadtteil-Ebene&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;relevante-datenstze&quot;&gt;Relevante Datensätze&lt;/h3&gt;
+
+&lt;p&gt;Nach der Datenaufbereitung entschieden wir uns, folgende erhaltene Datensätze aufgrund Ihrer Relevanz zu berücksichtigen:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Geographische Gliederung der Stadt in 20 Stadtteile&lt;/li&gt;
+  &lt;li&gt;Einwohnerzahlen pro Altersgruppe (0-2, 3-5, 6-9, 10-14, 15-19, usw.) und Zählersprengel
+    &lt;ul&gt;
+      &lt;li&gt;Hiervon gab es jeweils einen Datensatz pro Jahr für den Zeitraum &lt;em&gt;2013-2017&lt;/em&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Mapping-Tabelle: Stadtteil &amp;lt;-&amp;gt; zugehörige Zählersprengel&lt;/li&gt;
+  &lt;li&gt;Standorte (Breiten- und Längengrad) für sämtliche Bildungseinrichtungen der Stadt&lt;/li&gt;
+  &lt;li&gt;Metadaten der Bildungseinrichtungen (Art der Einrichtung, Name, Adresse, Website)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Das folgende Listing zeigt einen Ausschnitt aus den &lt;code class=&quot;highlighter-rouge&quot;&gt;.geo.json&lt;/code&gt;- Daten. 
+Hier wird ein Polygon mit allen Eckpunkten eines Stadtteils definiert (hier auf 2 Eckpunkte gekürzt).&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;properties&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+	&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+		&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;NR&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;BEZEICH&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Innenstadt&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+	&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+	&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;geometry&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Polygon&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;coordinates&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+		&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+			&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;11.395122994656139&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;47.273272130375268&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+			&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;11.395604221218592&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;47.273105775547322&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+			&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+			&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+		&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+	&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;prototyp&quot;&gt;Prototyp&lt;/h2&gt;
+
+&lt;h3 id=&quot;visualisierung&quot;&gt;Visualisierung&lt;/h3&gt;
+&lt;p&gt;Innerhalb der Projektlaufzeit wurde von den Autoren dieser Microsite ein interaktiver Prototyp 
+in Form einer Java-Anwendung erstellt. Die folgende Abbildung zeigt die Anwendung im Ganzen, 
+wobei wichtige Bereiche hervorgehoben sind. Anschließend werden diese Bereiche genauer beschrieben.&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;http://localhost:4000/images/innsbruck_education/screenshot_main_with_numbers.png&quot; width=&quot;92%&quot; /&gt;
+  &lt;figcaption&gt;Relevante Elemente der &lt;i&gt;InnsbruckEducation&lt;/i&gt;-Anwendung&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Karte der Stadt Innsbruck
+    &lt;ul&gt;
+      &lt;li&gt;Abgrenzungen der Stadtteile&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Heatmap&lt;/strong&gt;: Je dunkler der Rot-Ton, desto mehr Schüler/Studendten wohnen im Stadtteil&lt;/li&gt;
+      &lt;li&gt;Hervorhebung eines Stadtteils nach Auswahl&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Streudiagramm (Scatterplot)zum Verhältnis Anzahl Bildungseinrichtungen/Anzahl Einwohner
+    &lt;ul&gt;
+      &lt;li&gt;Je nach eingestelltem Filter ändern sich die Achsen und die Inhalte&lt;/li&gt;
+      &lt;li&gt;Der aktuell ausgewählte Bezirk wird im Scatterplot farblich hervorgehoben&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Verbindung zwischen Karte und Scatterplot&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Wenn ein Stadtteil auf der Karte angeklickt wird, wird dieses im Streudigramm markiert&lt;/li&gt;
+      &lt;li&gt;Wird auf der anderen Seite ein Punkt (welcher ein Stadtteil repräsentiert) im Digramm angeklickt, hat dies auch Auswirkungen auf die Stadtkarte&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Legende und Interaktions-Elemente:
+    &lt;ul&gt;
+      &lt;li&gt;Schalter, um die Anzeige von Schulen und Hochschulen separat ein-/auszuschalten&lt;/li&gt;
+      &lt;li&gt;Ein Schieberegler, um das derzeit anzuzeigende Jahr zu wechseln (2013-2017)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;interaktionen&quot;&gt;Interaktionen&lt;/h3&gt;
+&lt;p&gt;Der Nutzer unserer Anwendung kann über multiple Arten mit dieser interagieren:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Klicken und Ziehen auf der Karte:&lt;/strong&gt; Karte bewegen&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Klick auf Stadtteil auf der Karte bzw. auf dem Scatterplot:&lt;/strong&gt; Zoom &amp;amp; Hervorheben des selektierten Stadtteils&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Rechtsklick:&lt;/strong&gt; Zurück zur Startansicht&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Aktivieren bzw. Deaktivieren der Schalter für Schulen/Hochschulen:&lt;/strong&gt; Ein- bzw. Ausblenden der jeweiligen Einrichtungs-Art&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Selektion eines Jahres durch den Jahres-Slider:&lt;/strong&gt; Vollständige Aktualisierung der Visualisierungen auf das neu ausgewählte Jahr&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Hovern über eine Bildungseinrichtung:&lt;/strong&gt; Anzeige einer Info-Box mit Daten zur jeweiligen Einrichtung (Name, Typ, Adresse)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Hovern über nicht-selektierten Bezirk:&lt;/strong&gt; Temporäre Einblendung der Standorte der Bildungseinrichtungen des jeweiligen Bezirks&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure&gt;
+  &lt;div align=&quot;center&quot;&gt;
+  	&lt;img src=&quot;http://localhost:4000/images/innsbruck_education/ui_elements.png&quot; /&gt;
+  	&lt;figcaption&gt;Interaktive UI-Elemente der Anwendung&lt;/figcaption&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&quot;demonstration&quot;&gt;Demonstration&lt;/h3&gt;
+
+&lt;p&gt;Das folgende Video zeigt unseren Prototyp in Aktion:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;TODO: Video (Youtube) einfügen!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;erkenntnisse&quot;&gt;Erkenntnisse&lt;/h3&gt;
+&lt;p&gt;Es zeigte sich nach den ersten Anläufen schnell das die Anzahl der Schüler und Studenten mit dennen der Bildungseinrichtungen in den Stadtteilen korreliert.&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;div align=&quot;center&quot;&gt;
+  	&lt;img src=&quot;http://localhost:4000/images/innsbruck_education/Scatterplot_2017.png&quot; /&gt;
+  	&lt;figcaption&gt;Scatterplot zum Jahr 2017&lt;/figcaption&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Es gab jedoch Ausnahmen, z.B. zwei drei Ausreiser in dennen mehr Schüler und Studenten leben aber eher eine mittlere Dichte an Bildungseinrichtungen vorhanden ist. Dabei gibt es einen Extremwert indem viele Schüler/Studenten leben aber nur 2 Bildunseirnichtungen vorhanden sind. Jedoch sind diese Stadteile oft relativ klein und liegen neben Stadtteilen mit vielen Bildungseinrichtungen.&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;http://localhost:4000/images/innsbruck_education/Extremwert_Pradl.png&quot; /&gt;
+  &lt;figcaption&gt;Extremwert im Bezirk Pradl&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Des Weiteren gibt es 2 Stadtteile, in denen das Verhältnis zwischen der Anzahl der Bildungseinrichtungen zu der dortigen Einwohnerzahl deutlich über dem Stadtdurchschnitt liegt. Im Gesamtkontext zeigt sich die Haupthypothese als bestätgit.&lt;/p&gt;
+
+&lt;p&gt;Die nachstehende Abbildung zeigt einen Ort, an dem untypischerweiße drei Schulen quasi in unmittelbarer Nähe zu erkennen sind. 
+Als wir die Labels für die Bildungseinrichtungen implementiert hatten, konnten wir feststellen, dass es sich hier um Berufsschulen handelt, die in einem Schulkomplex untergebracht sind.&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;div align=&quot;center&quot;&gt;
+  	&lt;img src=&quot;http://localhost:4000/images/innsbruck_education/school_cluster.png&quot; /&gt;
+  	&lt;figcaption&gt;Cluster mit 3 Schulen&lt;/figcaption&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;implementierung&quot;&gt;Implementierung&lt;/h2&gt;
+
+&lt;h3 id=&quot;tools--technologien&quot;&gt;Tools &amp;amp; Technologien&lt;/h3&gt;
+
+&lt;p&gt;Für die Realisierung des vorgestellten Prototypen wurde auf folgende Technologien, Frameworks und Tools zurückgegriffen:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Programmiersprache:&lt;/strong&gt; &lt;a href=&quot;http://openjdk.java.net/&quot; target=&quot;_blank&quot;&gt;Java 8&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Visualisierungs-Framework:&lt;/strong&gt; &lt;a href=&quot;https://processing.org/&quot; target=&quot;_blank&quot;&gt;Processing 3&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Bibliothek für geografische Karten:&lt;/strong&gt; &lt;a href=&quot;http://unfoldingmaps.org/&quot; target=&quot;_blank&quot;&gt;Unfolding Maps&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Scatter-Plots und Farbpaletten:&lt;/strong&gt; &lt;a href=&quot;https://www.gicentre.net/software/#/utils/&quot; target=&quot;_blank&quot;&gt;GiCentre Utilities&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;UI-Elemente:&lt;/strong&gt; &lt;a href=&quot;http://web.media.mit.edu/~cassiano/projects/cards_ui/&quot; target=&quot;_blank&quot;&gt;CardsUI&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Entwicklungsumgebung:&lt;/strong&gt; &lt;a href=&quot;https://www.jetbrains.com/idea/&quot; target=&quot;_blank&quot;&gt;IntelliJ IDEA Ultimate&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Build-Tool:&lt;/strong&gt; &lt;a href=&quot;https://gradle.org/&quot; target=&quot;_blank&quot;&gt;Gradle&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Datenanpassung:&lt;/strong&gt; &lt;a href=&quot;https://www.gnu.org/software/bash/&quot; target=&quot;_blank&quot;&gt;Bash&lt;/a&gt;-Skripte&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Datenaufbereitung:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Texteditoren:&lt;/strong&gt; &lt;a href=&quot;http://www.vim.org/&quot; target=&quot;_blank&quot;&gt;vim&lt;/a&gt;, &lt;a href=&quot;https://github.com/zyedidia/micro&quot; target=&quot;_blank&quot;&gt;micro&lt;/a&gt;, &lt;a href=&quot;https://wiki.gnome.org/Apps/Gedit&quot; target=&quot;_blank&quot;&gt;gedit&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Tabellenkalkulation:&lt;/strong&gt; &lt;a href=&quot;https://de.libreoffice.org/discover/calc/&quot; target=&quot;_blank&quot;&gt;Libreoffice Calc&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Versionsverwaltung:&lt;/strong&gt; &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt;, Repository gehosted auf &lt;a href=&quot;https://github.com&quot; target=&quot;_blank&quot;&gt;Github&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;schwierigkeiten-whrend-der-umsetzung&quot;&gt;Schwierigkeiten während der Umsetzung&lt;/h3&gt;
+
+&lt;p&gt;Folgende Probleme sind während der Realisierung unseres Prototyps aufgetreten, die größtenteils jedoch relativ schnell adressiert werden konnten:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Implementierung von GUI-Elementen in Processing
+    &lt;ul&gt;
+      &lt;li&gt;Es gibt nur wenige fertige Bibliotheken, die meisten sind nicht mehr mit Processing 3 kompatibel&lt;/li&gt;
+      &lt;li&gt;Manche Bibliotheken nur mit rudimentärer Funktionalität (z.B. keine Listener)&lt;/li&gt;
+      &lt;li&gt;Einige Funktionen mussten manuell ergänzt werden und durch Trial&amp;amp;Error erforscht werden&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Mapping zwischen den Zählersprengeln und den Stadtteilen
+    &lt;ul&gt;
+      &lt;li&gt;Geographische Abgrenzungen Innsbrucks war nur auf Stadtteile-Ebene (grob) vorhanden, die Einwohnerzahlen jedoch nur für die Zählersprengel (fein)&lt;/li&gt;
+      &lt;li&gt;Mit Hilfe eines dritten Datensatzes musste ein Mapping implementiert werden&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Verbindung zwischen Scatterplot und Karte herstellen
+    &lt;ul&gt;
+      &lt;li&gt;Für jeden Punkt im Scatterplot musste manuell ein pixelgenauer Listener mit geeignetem Toleranz-Radius hinzugefügt werden&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Korrekte Platzierung und Größe der Marker-Labels&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;fazit&quot;&gt;Fazit&lt;/h2&gt;
+
+&lt;h3 id=&quot;reflektion&quot;&gt;Reflektion&lt;/h3&gt;
+
+&lt;h3 id=&quot;ausblick&quot;&gt;Ausblick&lt;/h3&gt;
+
+&lt;p&gt;Aufgrund der knappen Projektbearbeitungszeit sowie diversen technischen Schwierigkeiten sowie Fehlen gewisser Daten konnten folgende ursprünglich geplante Aspekte nicht umgesetzt werden:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Visualisierung der Wege der Schüler und Studenten Innsbrucks zu Ihren jeweiligen Bildungseinrichtungen&lt;/li&gt;
+  &lt;li&gt;Anpassung an diverse Bildschirmgrößen
+    &lt;ul&gt;
+      &lt;li&gt;Derzeit läuft die Anwendung nur mit einer Fenstergröße von 1280*720&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Darstellung der Migrationsströme innerhalb der Stadt&lt;/li&gt;
+  &lt;li&gt;Einbeziehung der &lt;strong&gt;Gesamt-Kapazitäten&lt;/strong&gt; und &lt;strong&gt;Auslastungen&lt;/strong&gt; der angezeigten Bildungseinrichtungen
+    &lt;ul&gt;
+      &lt;li&gt;Daten über die derzeitige Auslastung der Unis und Hochschulen waren vorhanden, hätten jedoch einzeln aufbereitet werden müssen&lt;/li&gt;
+      &lt;li&gt;Solche Daten von Schulen zu bekommen, gestaltet sich um Einiges aufwendiger&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;selbst-ausprobieren&quot;&gt;Selbst ausprobieren?&lt;/h3&gt;
+
+&lt;p&gt;Den Quellcode des Projekts finden Sie zum selbst Ausprobieren &lt;a href=&quot;https://github.com/fhefner/gdv-ws17&quot;&gt;in diesem Github-Repository&lt;/a&gt;.&lt;/p&gt;
+</content>
+
+			
+				<category term="projects" />
+			
+			
+
+			<published>2018-01-23T00:00:00+01:00</published>
+		</entry>
+	
+		<entry>
+			<id>http://localhost:4000/projects/videos/</id>
+			<title>Projekt mit Video</title>
+			<link href="http://localhost:4000/projects/videos/" rel="alternate" type="text/html" title="Projekt mit Video" />
+			<updated>2018-01-08T00:00:00+01:00</updated>
+
+			
+				
+				<author>
+					
+						<name>Hans Schmidt, Sandra Müller, Bülent Yilmaz &amp;amp; Angela Meier</name>
+					
+					
+					
+				</author>
+			
+			<summary>Dieses &lt;em&gt;Projekt mit Video&lt;/em&gt; zeigt wie man externe Videos einbettet.</summary>
+			<content type="html" xml:base="http://localhost:4000/projects/videos/">&lt;p&gt;Kleines Beispiel, wie man verschiedene Video-Player einbetten kann.&lt;/p&gt;
+
+&lt;h2 id=&quot;vimeo&quot;&gt;Vimeo&lt;/h2&gt;
+&lt;p&gt;Gehen Sie zu Ihrem Vimeo Video, klicken Sie Share, selektieren sie den Embed-Code mit den von Ihnen ausgewählten Optionen und fügen Sie den Code in ein DIV mit einer &lt;code class=&quot;highlighter-rouge&quot;&gt;flex-video&lt;/code&gt; Klasse.&lt;/p&gt;
+
+&lt;div class=&quot;flex-video&quot;&gt;
+&lt;iframe src=&quot;https://player.vimeo.com/video/173787508&quot; width=&quot;640&quot; height=&quot;300&quot; frameborder=&quot;0&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;youtube&quot;&gt;Youtube&lt;/h2&gt;
+&lt;p&gt;Gehen Sie zu Ihrem Youtube Video, klicken Sie Share, wählen Sie den Embed-Reiter, selektieren sie den Embed-Code mit den von Ihnen ausgewählten Optionen und fügen Sie den Code in ein DIV mit einer &lt;code class=&quot;highlighter-rouge&quot;&gt;flex-video&lt;/code&gt; Klasse.&lt;/p&gt;
+
+&lt;div class=&quot;flex-video&quot;&gt;
+&lt;iframe width=&quot;640&quot; height=&quot;360&quot; src=&quot;https://www.youtube.com/embed/jjA98jhz1KY?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+</content>
+
+			
+				<category term="projects" />
+			
+			
+
+			<published>2018-01-08T00:00:00+01:00</published>
+		</entry>
+	
+		<entry>
+			<id>http://localhost:4000/projects/template/</id>
+			<title>Template</title>
+			<link href="http://localhost:4000/projects/template/" rel="alternate" type="text/html" title="Template" />
+			<updated>2018-01-07T00:00:00+01:00</updated>
+
+			
+				
+				<author>
+					
+						<name>Susanne Schneider &amp;amp; Matthias Meier</name>
+					
+					
+					
+				</author>
+			
+			<summary>Dieses Markdown-Template zeigt einige Möglichkeiten für die Projektdokumentation</summary>
+			<content type="html" xml:base="http://localhost:4000/projects/template/">&lt;p&gt;[Abstract 50-100 Wörter] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut malesuada venenatis semper. Fusce non mauris in nisl venenatis lobortis. Fusce varius nulla eget ornare commodo. Pellentesque neque mauris, euismod ut lacus ut, sodales dapibus dui. Fusce dapibus turpis nec justo tempus, tincidunt efficitur sapien scelerisque. &lt;em&gt;Praesent vitae&lt;/em&gt; nibh vel urna aliquam fermentum at vitae lectus. Integer sit amet nibh risus. Cras orci orci, tempus ac ex eget, sollicitudin tincidunt urna. Integer rhoncus elit et iaculis tempus. Donec eget rutrum risus. Maecenas &lt;em&gt;varius nisl metus&lt;/em&gt;, nec condimentum lorem congue vitae. Sed ultrices eros lacinia feugiat pellentesque. Curabitur vitae aliquet eros, nec.&lt;/p&gt;
+
+&lt;p&gt;(Sie können für Ihre Dokumentation sämtliche Auszeichnungen von &lt;strong&gt;Markdown&lt;/strong&gt; nutzen.)&lt;/p&gt;
+
+&lt;h2 id=&quot;einfhrung--konzept&quot;&gt;Einführung / Konzept&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Einführung: Was ist die Motivation hinter Ihrem Projekt?&lt;/li&gt;
+  &lt;li&gt;Konzept: Was ist die Grundidee, Hauptfrage, wichtigste Hypothese?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;daten--auswertung&quot;&gt;Daten / Auswertung&lt;/h2&gt;
+
+&lt;h3 id=&quot;daten&quot;&gt;Daten&lt;/h3&gt;
+&lt;p&gt;Quellen, Erhebung, Parsing, Aggregation, …&lt;/p&gt;
+
+&lt;p&gt;Wir haben die Daten von &lt;a href=&quot;http://openstreetmap.org/&quot;&gt;OpenStreetMap&lt;/a&gt; genutzt, …&lt;/p&gt;
+
+&lt;h3 id=&quot;prozess&quot;&gt;Prozess&lt;/h3&gt;
+&lt;p&gt;Sinnvolle Auswahl relevanter Experimente.&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;http://localhost:4000/images//meinProjekt/template-image1.jpg&quot; /&gt;
+  &lt;figcaption&gt;Eine Bildbeschreibung&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;prototyp--ergebnisse&quot;&gt;Prototyp / Ergebnisse&lt;/h2&gt;
+
+&lt;h3 id=&quot;visualisierung&quot;&gt;Visualisierung&lt;/h3&gt;
+&lt;p&gt;Ergebnisse, Design, Prototyp. Darstellungen echter oder ausgewählter Daten.&lt;/p&gt;
+
+&lt;h3 id=&quot;erkenntnisse&quot;&gt;Erkenntnisse&lt;/h3&gt;
+&lt;p&gt;Was haben Sie herausgefunden? Können Sie ein/zwei Aussagen oder Stories hervorheben?&lt;/p&gt;
+
+&lt;h3 id=&quot;implementierung&quot;&gt;Implementierung&lt;/h3&gt;
+&lt;p&gt;Wie haben Sie die Visualisierung umgesetzt? Welche Tools haben Sie für welche Schritte eingesetzt?&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;Data&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;loadData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;doSomeVisualization&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;fazit&quot;&gt;Fazit&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Reflektion: Haben Sie erreicht, was sie wollten? Ist Ihr Ergebnis hilfreich?&lt;/li&gt;
+  &lt;li&gt;Ausblick: Welche weiteren Ideen haben Sie? Was könnten interessante
+nächste Schritte sein?&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+
+			
+				<category term="projects" />
+			
+			
+
+			<published>2018-01-07T00:00:00+01:00</published>
+		</entry>
+	
+		<entry>
+			<id>http://localhost:4000/projects/gallery/</id>
+			<title>Projekt mit Bildergalerie</title>
+			<link href="http://localhost:4000/projects/gallery/" rel="alternate" type="text/html" title="Projekt mit Bildergalerie" />
+			<updated>2018-01-06T00:00:00+01:00</updated>
+
+			
+				
+				<author>
+					
+						<name>Hans Schmidt</name>
+					
+					
+					
+				</author>
+			
+			<summary>Lorem ipsum...</summary>
+			<content type="html" xml:base="http://localhost:4000/projects/gallery/">&lt;p&gt;Im Folgenden wird eine Galerie angezeigt. Die Bilder können angeklickt werden, und eine Lightbox erscheint (modaler Dalog mit Rechts/Links-Navigation).&lt;/p&gt;
+
+&lt;div&gt;
+	&lt;ul class=&quot;clearing-thumbs small-block-grid-4&quot; data-clearing=&quot;&quot;&gt;
+		
+		
+		
+		
+		&lt;li&gt;&lt;a href=&quot;http://localhost:4000/images//gallery/gallery1.jpg&quot;&gt;&lt;img data-caption=&quot;Lorem ipsum&quot; src=&quot;http://localhost:4000/images//gallery/gallery1-thumb.jpg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+		
+		
+		
+		
+		&lt;li&gt;&lt;a href=&quot;http://localhost:4000/images//gallery/gallery2.jpg&quot;&gt;&lt;img data-caption=&quot;Andere Bildunterschrift&quot; src=&quot;http://localhost:4000/images//gallery/gallery2-thumb.jpg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+		
+		
+		
+		
+		&lt;li&gt;&lt;a href=&quot;http://localhost:4000/images//gallery/gallery3.jpg&quot;&gt;&lt;img data-caption=&quot;Und noch eine&quot; src=&quot;http://localhost:4000/images//gallery/gallery3-thumb.jpg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+		
+	&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Und gleich noch eine:&lt;/p&gt;
+
+&lt;div&gt;
+	&lt;ul class=&quot;clearing-thumbs small-block-grid-4&quot; data-clearing=&quot;&quot;&gt;
+		
+		
+		
+		
+		&lt;li&gt;&lt;a href=&quot;http://localhost:4000/images//gallery/gallery3.jpg&quot;&gt;&lt;img data-caption=&quot;Zweite Galerie, erstes Bild&quot; src=&quot;http://localhost:4000/images//gallery/gallery3-thumb.jpg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+		
+		
+		
+		
+		&lt;li&gt;&lt;a href=&quot;http://localhost:4000/images//gallery/gallery1.jpg&quot;&gt;&lt;img data-caption=&quot;Zweite Galerie, zweites Bild&quot; src=&quot;http://localhost:4000/images//gallery/gallery1-thumb.jpg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+		
+	&lt;/ul&gt;
+&lt;/div&gt;
+
+</content>
+
+			
+				<category term="projects" />
+			
+			
+
+			<published>2018-01-06T00:00:00+01:00</published>
+		</entry>
+	
+</feed>
